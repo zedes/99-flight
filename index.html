@@ -11,18 +11,7 @@
         
 	  table.flightplans {
 
- .banner {
-    position: sticky;   /* keeps banner fixed */
-    top: 0;             /* sticks to very top of viewport */
-    z-index: 3;         /* higher than table header */
-    text-align: center; /* center the image */
-    background: #000;   /* fallback background */
-  }
-  .banner img {
-    width: 1000px;         /* banner is 95% wide */
-    height: 200px;       /* proportional height */
-    display: inline-block;
-  }
+<style> .banner { position: sticky; /* keeps banner fixed */ top: 0; /* sticks to very top of viewport */ z-index: 3; /* higher than table header */ text-align: center; /* center the image */ background: #000; /* fallback background */ } .banner img { width: 100%; /* scales to full page width */ height: auto; /* proportional height */ display: block; /* removes inline spacing */
 
   thead th {
     background: #444;
@@ -2062,6 +2051,7 @@ document.addEventListener("DOMContentLoaded", () => {
    </body>
 
 </html>
+
 
 
 
