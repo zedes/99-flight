@@ -1,0 +1,2042 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8" />
+      <title>Around the World with Zox in 99 Flights</title>
+      <style>
+         body { font-family: Arial, sans-serif; margin: 20px; background: #f9f9f9; }
+  h1 { text-align: center; }
+  #searchBar { width: 300px; padding: 8px; margin-bottom: 15px; }
+  #resetBtn { padding: 8px 12px; margin-left: 10px; }
+        
+	  table.flightplans {
+            
+			align: "center";
+			width: 100%;
+            border-collapse: collapse;
+            font-family: "Segoe UI", Arial, sans-serif;
+            font-size: 14px;
+            background-color: #fdfdfd;
+            box-shadow: 0 0px 0px rgba(0, 0, 0, 0.1);
+         }
+         table.flightplans thead {
+            background: linear-gradient(90deg, #004466, #006699);
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+         }
+         table.flightplans th,
+         table.flightplans td {
+            padding: 1px 5px;
+            border: 1px solid #ddd;
+         }
+         table.flightplans tbody tr:nth-child(even) {
+            background-color: #f7f9fb;
+         }
+         table.flightplans tbody tr:hover {
+            background-color: #eaf3f9;
+            transition: background-color 0.3s ease;
+         } /* Centered columns */
+         .centered {
+            text-align: center;
+            vertical-align: middle;
+         } /* Route styling: two lines, centered */
+         .route {
+            text-align: center;
+            line-height: 1.4;
+            font-weight: 400;
+         }
+         table.flightplans a {
+            color: #006699;
+            text-decoration: none;
+            font-weight: 400;
+         }
+         table.flightplans a:hover {
+            text-decoration: underline;
+         }
+         .localconditions {
+            font-style: italic;
+            color: #444;
+            text-align: center;
+         }
+      th {
+         padding: 1px 5px;
+            border: 1px solid #ddd;
+  background: #444;
+  position: sticky; /* keeps header fixed */
+  top: 0;           /* sticks to top of viewport */
+  z-index: 2;       /* ensures header stays above rows */
+}
+
+      </style>
+   </head>
+   <body>
+      <h1>Around the World with Zox in 99 flights</h1>
+
+<input type="text" id="searchBar" placeholder="Type anything to search...">
+<button id="resetBtn">Reset</button>
+
+      <table class="flightplans" id="flightsTable">
+         <thead>
+            <tr>
+               <th>#</th>
+               <th>Destination</th>
+              <th>Recomended</br>Aircraft</th>
+               <th>Route (ICAO)</th>
+               <th>Local Conditions</th>
+               <th>Distance (nm)</th>
+               <th>Duration</th>
+               <th>Points of Interest</th>
+               <th>Wikipedia</th>
+               <th>Download</th>
+            </tr>
+         </thead>
+         <tbody>
+            <tr>
+               <td class="centered">1</td>
+               <td>Socotra (Yemen)</td>
+               <td>Cessna 172 Skyhawk – 122 kt</td>
+               <td class="route">OYSQ<br />OYSQ</td>
+               <td data-icao="OYSQ" class="localconditions">Loading...</td>
+               <td class="centered">82</td>
+               <td class="centered">00:40</td>
+               <td>
+                  Hadibo Town, Arher Dunes, Hoq Cave, Dixam Plateau, South Coast
+                  Estuary, Detwah Lagoon
+               </td>
+               <td class="centered">
+                  <a href="https://en.wikipedia.org/wiki/Socotra">Socotra</a>
+               </td>
+               <td class="centered"><a href="https://drive.google.com/file/d/1-CU3RgYwLk6bj1q-X4qvGIRzvUHCJlSH/view?usp=drive_link" target="_blank">Download</a></td>
+            </tr>
+            <tr>
+               <td class="centered">2</td>
+               <td>Danakil Depression (Ethiopia)</td>
+               <td>Diamond DA40 – 150 kt</td>
+               <td class="route">HAMK<br />HAMK</td>
+               <td data-icao="HAMK" class="localconditions">Loading...</td>
+               <td class="centered">170</td>
+               <td class="centered">01:10</td>
+               <td>Dallol, Erta Ale, Lake Afrera</td>
+               <td class="centered">
+                  <a href="https://en.wikipedia.org/wiki/Danakil_Depression"
+                     >Danakil Depression</a
+                  >
+               </td>
+               <td class="centered"><a href="https://drive.google.com/file/d/18xeUl4I5jQxfYtFvyYgKNJnr40w2mHbd/view?usp=drive_link" target="_blank">Download</a></td>
+            </tr>
+            <tr>
+               <td class="centered">3</td>
+               <td>Lüderitz (Namibia)</td>
+               <td>Pilatus PC-12 – 270 kt</td>
+               <td class="route">FYLZ<br />FYLZ</td>
+               <td data-icao="FYLZ" class="localconditions">Loading...</td>
+               <td class="centered">255</td>
+               <td class="centered">00:55</td>
+               <td>Lüderitz, Diaz Point, Kolmanskop, Namib dunes</td>
+               <td class="centered">
+                  <a href="https://en.wikipedia.org/wiki/L%C3%BCderitz"
+                     >Lüderitz</a
+                  >
+               </td>
+               <td class="centered"><a href="https://drive.google.com/file/d/1XNnw0dlS-r7vf5wYUdVFbWCQY0jfOHUH/view?usp=drive_link" target="_blank">Download</a></td>
+            </tr>
+            <tr>
+               <td class="centered">4</td>
+               <td>Lake Natron (Tanzania)</td>
+               <td>Diamond DA40 – 150 kt</td>
+               <td class="route">HTAR<br />HTAR</td>
+               <td data-icao="HTAR" class="localconditions">Loading...</td>
+               <td class="centered">120</td>
+               <td class="centered">00:50</td>
+               <td>Rift Valley, Lake Natron, Flamingo colonies</td>
+               <td class="centered">
+                  <a href="https://en.wikipedia.org/wiki/Lake_Natron"
+                     >Lake Natron</a
+                  >
+               </td>
+               <td class="centered"><a href="https://drive.google.com/file/d/11TnngyYUaLcUpGzs1yXUysBlrmE0qCGH/view?usp=drive_link" target="_blank">Download</a></td>
+            </tr>
+            <tr>
+               <td class="centered">5</td>
+               <td>Ngorongoro Crater (Tanzania)</td>
+               <td>Diamond DA40 – 150 kt</td>
+               <td class="route">HTMW<br />HTMW</td>
+               <td data-icao="HTMW" class="localconditions">Loading...</td>
+               <td class="centered">160</td>
+               <td class="centered">01:05</td>
+               <td>Grassy plains, Wildebeest herds, Ngorongoro Crater</td>
+               <td class="centered">
+                  <a
+                     href="https://en.wikipedia.org/wiki/Ngorongoro_Conservation_Area"
+                     >Ngorongoro Crater</a
+                  >
+               </td>
+               <td class="centered"><a href="https://drive.google.com/file/d/18v79w_LcYcjlw6xu7NP3wj2Pxvo0bPys/view?usp=drive_link" target="_blank">Download</a></td>
+            </tr>
+            <tr>
+               <td class="centered">6</td>
+               <td>White Desert (Egypt)</td>
+               <td>Daher TBM 930 – 330 kt</td>
+               <td class="route">HECA<br />HECA</td>
+               <td data-icao="HECA" class="localconditions">Loading...</td>
+               <td class="centered">420</td>
+               <td class="centered">01:15</td>
+               <td>Crystal Mountain, Chalk formations, Giza pyramids</td>
+               <td class="centered">
+                  <a href="https://en.wikipedia.org/wiki/White_Desert"
+                     >White Desert</a
+                  >
+               </td>
+               <td class="centered"><a href="https://drive.google.com/file/d/1kJwRvLciRkRMAY4UpVQDMcb3msSsNXF1/view?usp=drive_link" target="_blank">Download</a></td>
+            </tr>
+            <tr>
+               <td class="centered">7</td>
+               <td>Dead Sea (Jordan)</td>
+               <td>Cessna 172 Skyhawk – 122 kt</td>
+               <td class="route">OJAI<br />OJAI</td>
+               <td data-icao="OJAI" class="localconditions">Loading...</td>
+               <td class="centered">40</td>
+               <td class="centered">00:20</td>
+               <td>Salt shores, Healing pools, Mineral formations</td>
+               <td class="centered">
+                  <a href="https://en.wikipedia.org/wiki/Dead_Sea">Dead Sea</a>
+               </td>
+               <td class="centered"><a href="https://drive.google.com/file/d/1jCOVQegjY_LYtu-uA0HpvH5PQH-gUN6O/view?usp=drive_link" target="_blank">Download</a></td>
+            </tr>
+            <tr>
+               <td class="centered">8</td>
+               <td>Victoria Falls (Zambia/Zimbabwe)</td>
+               <td>Cessna 172 Skyhawk – 122 kt</td>
+               <td class="route">FLLI<br />FLLI</td>
+               <td data-icao="FLLI" class="localconditions">Loading...</td>
+               <td class="centered">55</td>
+               <td class="centered">00:25</td>
+               <td>Zambezi River, Falls gorge, Knife’s Edge Bridge</td>
+               <td class="centered">
+                  <a href="https://en.wikipedia.org/wiki/Victoria_Falls"
+                     >Victoria Falls</a>
+               </td>
+               <td class="centered"><a href="https://drive.google.com/file/d/1niHJ7wSc6UJmquvIZ0OquUel-CQtf9aB/view?usp=drive_link" target="_blank">Download</a></td>
+            </tr>
+
+            <tr>
+               <td class="centered">9</td>
+               <td>Crooked Forest (Poland)</td>
+               <td>Cessna 172 Skyhawk – 122 kt</td>
+               <td class="route">EPSC<br />EPSC</td>
+               <td data-icao="EPSC" class="localconditions">Loading...</td>
+               <td class="centered">30</td>
+               <td class="centered">00:15</td>
+               <td>Curved pines, Gryfino, Oder River</td>
+               <td class="centered">
+                  <a href="https://en.wikipedia.org/wiki/Crooked_Forest"
+                     >Crooked Forest</a
+                  >
+               </td>
+               <td class="centered"><a href="https://drive.google.com/file/d/1GT-beZEXCuTQhwxor_GEIFnJRMbHWQcx/view?usp=drive_link" target="_blank">Download</a></td>
+            </tr>
+            <tr>
+               <td class="centered">10</td>
+               <td>Neuschwanstein Castle (Germany)</td>
+               <td>Diamond DA40 – 150 kt</td>
+               <td class="route">EDMM<br />EDMM</td>
+               <td data-icao="EDMM" class="localconditions">Loading...</td>
+               <td class="centered">60</td>
+               <td class="centered">00:25</td>
+               <td>Bavarian Alps, Neuschwanstein Castle, Hohenschwangau</td>
+               <td class="centered">
+                  <a href="https://en.wikipedia.org/wiki/Neuschwanstein_Castle"
+                     >Neuschwanstein Castle</a
+                  >
+               </td>
+               <td class="centered"><a href="https://drive.google.com/file/d/1jKe2Q0-DksqaztAP-nrZLcllNnlD5lNR/view?usp=drive_link" target="_blank">Download</a></td>
+            </tr>
+
+            <tr>
+               <td class="centered">11</td>
+               <td>Meteora (Greece)</td>
+               <td>Cessna 172 Skyhawk – 122 kt</td>
+               <td class="route">LGBL<br />LGBL</td>
+               <td data-icao="LGBL" class="localconditions">Loading...</td>
+               <td class="centered">65</td>
+               <td class="centered">00:30</td>
+               <td>Monasteries, Rock pillars, Thessaly plain</td>
+               <td class="centered">
+                  <a href="https://en.wikipedia.org/wiki/Meteora">Meteora</a>
+               </td>
+               <td class="centered"><a href="https://drive.google.com/file/d/1K6oM8RjWE16J83ZOaO3LRGWzJCIPKohw/view?usp=drive_link" target="_blank">Download</a></td>
+            </tr>
+
+            <tr>
+               <td class="centered">12</td>
+               <td>Landwasser Viaduct (Switzerland)</td>
+               <td>Diamond DA40 – 150 kt</td>
+               <td class="route">LSZR<br />LSZR</td>
+               <td data-icao="LSZR" class="localconditions">Loading...</td>
+               <td class="centered">80</td>
+               <td class="centered">00:35</td>
+               <td>Alpine valleys, Landwasser Viaduct, Chur</td>
+               <td class="centered">
+                  <a href="https://en.wikipedia.org/wiki/Landwasser_Viaduct"
+                     >Landwasser Viaduct</a
+                  >
+               </td>
+               <td class="centered"><a href="https://drive.google.com/file/d/1Cro41Cwk-uSibzKOFMhtymmnLRCJygGW/view?usp=drive_link" target="_blank">Download</a></td>
+            </tr>
+
+            <tr>
+               <td class="centered">13</td>
+               <td>Verona (Italy)</td>
+               <td>Diamond DA40 – 150 kt</td>
+               <td class="route">LIPX<br />LIPX</td>
+               <td data-icao="LIPX" class="localconditions">Loading...</td>
+               <td class="centered">70</td>
+               <td class="centered">00:30</td>
+               <td>Verona, Monte Baldo, Sanctuary</td>
+               <td class="centered">
+                  <a href="https://en.wikipedia.org/wiki/Verona">Verona</a>
+               </td>
+               <td class="centered"><a href="https://drive.google.com/file/d/1VXY8-QdVHmbIO21tSlTgr1VEfNmm2xrd/view?usp=drive_link" target="_blank">Download</a></td>
+            </tr>
+
+            <tr>
+               <td class="centered">14</td>
+               <td>Mount Etna (Italy)</td>
+               <td>Pilatus PC-12 – 270 kt</td>
+               <td class="route">LICC<br />LICC</td>
+               <td data-icao="LICC" class="localconditions">Loading...</td>
+               <td class="centered">95</td>
+               <td class="centered">00:20</td>
+               <td>Volcano summit, Lava fields, Coastline</td>
+               <td class="centered">
+                  <a href="https://en.wikipedia.org/wiki/Mount_Etna"
+                     >Mount Etna</a
+                  >
+               </td>
+               <td class="centered"><a href="https://drive.google.com/file/d/1Nuz9gAqo_TEoKwRW91o1E9on3E8u-McD/view?usp=drive_link" target="_blank">Download</a></td>
+            </tr>
+
+            <tr>
+               <td class="centered">15</td>
+               <td>Drina River House (Serbia)</td>
+               <td>Cessna 172 Skyhawk – 122 kt</td>
+               <td class="route">LYUZ<br />LYUZ</td>
+               <td data-icao="LYUZ" class="localconditions">Loading...</td>
+               <td class="centered">85</td>
+               <td class="centered">00:40</td>
+               <td>Drina gorge, House on rock, Tara NP</td>
+               <td class="centered">
+                  <a href="https://en.wikipedia.org/wiki/Drina">Drina River</a>
+               </td>
+               <td class="centered"><a href="https://drive.google.com/file/d/1rzFovrKbEyaIlda8Ep3BTk8T10dp-SPg/view?usp=drive_link" target="_blank">Download</a></td>
+            </tr>
+
+            <tr>
+               <td class="centered">16</td>
+               <td>Giant’s Causeway (Northern Ireland, UK)</td>
+               <td>Cessna 172 Skyhawk – 122 kt</td>
+               <td class="route">EGAA<br />EGAA</td>
+               <td data-icao="EGAA" class="localconditions">Loading...</td>
+               <td class="centered">60</td>
+               <td class="centered">00:30</td>
+               <td>Hexagonal rocks, Antrim coast, Carrick-a-Rede</td>
+               <td class="centered">
+                  <a href="https://en.wikipedia.org/wiki/Giant%27s_Causeway"
+                     >Giant’s Causeway</a
+                  >
+               </td>
+               <td class="centered"><a href="https://drive.google.com/file/d/1F8XdaqmgnIgmvQn7knN6YLxe5rrMVNQa/view?usp=drive_link" target="_blank">Download</a></td>
+            </tr>
+
+            <tr>
+               <td class="centered">17</td>
+               <td>Wadi Rum (Jordan)</td>
+               <td>Diamond DA40 – 150 kt</td>
+               <td class="route">OJAI<br />OJAI</td>
+               <td data-icao="OJAI" class="localconditions">Loading...</td>
+               <td class="centered">70</td>
+               <td class="centered">00:30</td>
+               <td>Sandstone cliffs, Desert valleys, Lawrence’s Spring</td>
+               <td class="centered">
+                  <a href="https://en.wikipedia.org/wiki/Wadi_Rum">Wadi Rum</a>
+               </td>
+               <td class="centered"><a href="https://drive.google.com/file/d/1lit_KSKmng1HsOMRWgnF3lRThsUHXMLr/view?usp=drive_link" target="_blank">Download</a></td>
+            </tr>
+
+            <tr>
+               <td class="centered">18</td>
+               <td>Maldives (Maldives)</td>
+               <td>Cessna 172 Skyhawk – 122 kt</td>
+               <td class="route">VRMM<br />VRMM</td>
+               <td data-icao="VRMM" class="localconditions">Loading...</td>
+               <td class="centered">40</td>
+               <td class="centered">00:20</td>
+               <td>Bioluminescent beach, Coral reefs, Lagoon</td>
+               <td class="centered">
+                  <a href="https://en.wikipedia.org/wiki/Maldives">Maldives</a>
+               </td>
+               <td class="centered"><a href="https://drive.google.com/file/d/1SkBWKge9n2UeaEljXO8UWdIxAT0fPk_B/view?usp=drive_link" target="_blank">Download</a></td>
+            </tr>
+
+            <tr>
+               <td class="centered">19</td>
+               <td>Petra (Jordan)</td>
+               <td>Cessna 172 Skyhawk – 122 kt</td>
+               <td class="route">HEGR<br />HEGR</td>
+               <td data-icao="HEGR" class="localconditions">Loading...</td>
+               <td class="centered">50</td>
+               <td class="centered">00:25</td>
+               <td>Siq canyon, Treasury, Monastery</td>
+               <td class="centered">
+                  <a href="https://en.wikipedia.org/wiki/Petra">Petra</a>
+               </td>
+               <td class="centered"><a href="https://drive.google.com/file/d/1q3Ayo265c9XGYxsgUPh006xIYoy1myZh/view?usp=drive_link" target="_blank">Download</a></td>
+            </tr>
+
+            <tr>
+               <td class="centered">20</td>
+               <td>Mount Ijen (Indonesia)</td>
+               <td>Diamond DA40 – 150 kt</td>
+               <td class="route">WARR<br />WARR</td>
+               <td data-icao="WARR" class="localconditions">Loading...</td>
+               <td class="centered">55</td>
+               <td class="centered">00:25</td>
+               <td>Volcano crater, Blue fire, Acid lake</td>
+               <td class="centered">
+                  <a href="https://en.wikipedia.org/wiki/Ijen">Mount Ijen</a>
+               </td>
+               <td class="centered"><a href="https://drive.google.com/file/d/1mnuyeSqp3IFCtav7wvmbfHij-D2CNfMw/view?usp=drive_link" target="_blank">Download</a></td>
+            </tr>
+
+            <tr>
+               <td class="centered">21</td>
+               <td>Chocolate Hills (Philippines)</td>
+               <td>Cessna 172 Skyhawk – 122 kt</td>
+               <td class="route">RPVT<br />RPVT</td>
+               <td data-icao="RPVT" class="localconditions">Loading...</td>
+               <td class="centered">60</td>
+               <td class="centered">00:30</td>
+               <td>Conical hills, Bohol, Loboc River</td>
+               <td class="centered">
+                  <a href="https://en.wikipedia.org/wiki/Chocolate_Hills"
+                     >Chocolate Hills</a
+                  >
+               </td>
+               <td class="centered"><a href="https://drive.google.com/file/d/1mGHtoZGMBQ5JbLb1IW6mYOuvSGmBdoT9/view?usp=drive_link" target="_blank">Download</a></td>
+            </tr>
+
+            <tr>
+               <td class="centered">22</td>
+               <td>Great Wall of China (China)</td>
+               <td>Diamond DA40 – 150 kt</td>
+               <td class="route">ZBAA<br />ZBAA</td>
+               <td data-icao="ZBAA" class="localconditions">Loading...</td>
+               <td class="centered">95</td>
+               <td class="centered">00:40</td>
+               <td>Mutianyu, Badaling, Juyongguan</td>
+               <td class="centered">
+                  <a href="https://en.wikipedia.org/wiki/Great_Wall_of_China"
+                     >Great Wall of China</a
+                  >
+               </td>
+               <td class="centered"><a href="https://drive.google.com/file/d/1lDxn05tWO1Ku0H5c5E2mqd95SB34Odbj/view?usp=drive_link" target="_blank">Download</a></td>
+            </tr>
+
+            <tr>
+               <td class="centered">23</td>
+               <td>Stone Forest (China)</td>
+               <td>Diamond DA40 – 150 kt</td>
+               <td class="route">ZPPP<br />ZPPP</td>
+               <td data-icao="ZPPP" class="localconditions">Loading...</td>
+               <td class="centered">70</td>
+               <td class="centered">00:30</td>
+               <td>Limestone pillars, Shilin, Karst landscape</td>
+               <td class="centered">
+                  <a href="https://en.wikipedia.org/wiki/Stone_Forest"
+                     >Stone Forest</a
+                  >
+               </td>
+               <td class="centered"><a href="https://drive.google.com/file/d/1IToyyNHiu4zzjBxoEZQzA2eP2WhgVZ6m/view?usp=drive_link" target="_blank">Download</a></td>
+            </tr>
+
+            <tr>
+               <td class="centered">24</td>
+               <td>Ha Long Bay (Vietnam)</td>
+               <td>Diamond DA40 – 150 kt</td>
+               <td class="route">VVNB<br />VVNB</td>
+               <td data-icao="VVNB" class="localconditions">Loading...</td>
+               <td class="centered">80</td>
+               <td class="centered">00:35</td>
+               <td>Limestone karsts, Floating villages, Islands</td>
+               <td class="centered">
+                  <a href="https://en.wikipedia.org/wiki/H%E1%BA%A1_Long_Bay"
+                     >Ha Long Bay</a
+                  >
+               </td>
+               <td class="centered"><a href="https://drive.google.com/file/d/1V-ArXE5GWUAR6XtRYROpXnARatbq-Wop/view?usp=drive_link" target="_blank">Download</a></td>
+            </tr>
+
+            <tr>
+               <td class="centered">25</td>
+               <td>Mount Fuji (Japan)</td>
+               <td>Pilatus PC-12 – 270 kt</td>
+               <td class="route">RJTT<br />RJTT</td>
+               <td data-icao="RJTT" class="localconditions">Loading...</td>
+               <td class="centered">120</td>
+               <td class="centered">00:25</td>
+               <td>Fuji summit, Five Lakes, Hakone</td>
+               <td class="centered">
+                  <a href="https://en.wikipedia.org/wiki/Mount_Fuji"
+                     >Mount Fuji</a
+                  >
+               </td>
+               <td class="centered"><a href="https://drive.google.com/file/d/1LqF800x4R0FBeR1Rqio_-YivvIezC2YB/view?usp=drive_link" target="_blank">Download</a></td>
+            </tr>
+
+            <tr>
+               <td class="centered">26</td>
+               <td>Pamukkale (Turkey)</td>
+               <td>Cessna 172 Skyhawk – 122 kt</td>
+               <td class="route">LTAY<br />LTAY</td>
+               <td data-icao="LTAY" class="localconditions">Loading...</td>
+               <td class="centered">45</td>
+               <td class="centered">00:22</td>
+               <td>Travertine terraces, Hierapolis, Thermal pools</td>
+               <td class="centered">
+                  <a href="https://en.wikipedia.org/wiki/Pamukkale"
+                     >Pamukkale</a
+                  >
+               </td>
+               <td class="centered"><a href="https://drive.google.com/file/d/1swntFYNS-PomexZWeWczBLibzMAmdfwj/view?usp=drive_link" target="_blank">Download</a></td>
+            </tr>
+
+            <tr>
+               <td class="centered">27</td>
+               <td>Cappadocia (Turkey)</td>
+               <td>Cessna 172 Skyhawk – 122 kt</td>
+               <td class="route">LTAZ<br />LTAZ</td>
+               <td data-icao="LTAZ" class="localconditions">Loading...</td>
+               <td class="centered">55</td>
+               <td class="centered">00:27</td>
+               <td>Fairy chimneys, Göreme, Underground cities</td>
+               <td class="centered">
+                  <a href="https://en.wikipedia.org/wiki/Cappadocia"
+                     >Cappadocia</a
+                  >
+               </td>
+               <td class="centered"><a href="https://drive.google.com/file/d/1eY-h9uIyqwLgnvIJHu7VDzNPjhHx7ZMK/view?usp=drive_link" target="_blank">Download</a></td>
+            </tr>
+
+            <tr>
+               <td class="centered">28</td>
+               <td>Uluru (Australia)</td>
+               <td>Diamond DA40 – 150 kt</td>
+               <td class="route">YAYE<br />YAYE</td>
+               <td data-icao="YAYE" class="localconditions">Loading...</td>
+               <td class="centered">90</td>
+               <td class="centered">00:36</td>
+               <td>Uluru, Kata Tjuta, Desert plains</td>
+               <td class="centered">
+                  <a href="https://en.wikipedia.org/wiki/Uluru">Uluru</a>
+               </td>
+               <td class="centered"><a href="https://drive.google.com/file/d/1E7gub88eRXq7xD7JwDsYKEhp_fta8x-t/view?usp=drive_link" target="_blank">Download</a></td>
+            </tr>
+
+            <tr>
+               <td class="centered">29</td>
+               <td>Moeraki Boulders (New Zealand)</td>
+               <td>Cessna 172 Skyhawk – 122 kt</td>
+               <td class="route">NZDN<br />NZDN</td>
+               <td data-icao="NZDN" class="localconditions">Loading...</td>
+               <td class="centered">65</td>
+               <td class="centered">00:32</td>
+               <td>Moeraki Boulders, Koekohe Beach, Oamaru</td>
+               <td class="centered">
+                  <a href="https://en.wikipedia.org/wiki/Moeraki_Boulders"
+                     >Moeraki Boulders</a
+                  >
+               </td>
+               <td class="centered"><a href="https://drive.google.com/file/d/1LYzQFoi1DwwjBpnTJTDF4AQ8m-xM1KvY/view?usp=drive_link" target="_blank">Download</a></td>
+            </tr>
+
+            <tr>
+               <td class="centered">30</td>
+               <td>Milford Sound (New Zealand)</td>
+               <td>Diamond DA40 – 150 kt</td>
+               <td class="route">NZMF<br />NZMF</td>
+               <td data-icao="NZMF" class="localconditions">Loading...</td>
+               <td class="centered">75</td>
+               <td class="centered">00:30</td>
+               <td>Fiord cliffs, Waterfalls, Tasman Sea</td>
+               <td class="centered">
+                  <a href="https://en.wikipedia.org/wiki/Milford_Sound"
+                     >Milford Sound</a
+                  >
+               </td>
+               <td class="centered"><a href="https://drive.google.com/file/d/1vtOegS4pTIrCGXLx6pyrlF5S077KyBlY/view?usp=drive_link" target="_blank">Download</a></td>
+            </tr>
+
+            <tr>
+               <td class="centered">31</td>
+               <td>Iguazu Falls (Brazil/Argentina)</td>
+               <td>Cessna 172 Skyhawk – 122 kt</td>
+               <td class="route">SBFI<br />SBFI</td>
+               <td data-icao="SBFI" class="localconditions">Loading...</td>
+               <td class="centered">50</td>
+               <td class="centered">00:25</td>
+               <td>Devil’s Throat, Upper Iguazu, Rainbows</td>
+               <td class="centered">
+                  <a href="https://en.wikipedia.org/wiki/Iguazu_Falls"
+                     >Iguazu Falls</a
+                  >
+               </td>
+               <td class="centered"><a href="https://drive.google.com/file/d/1Jh_JULMW430ozOMz8l3FphSkAK_6PjU1/view?usp=drive_link" target="_blank">Download</a></td>
+            </tr>
+
+            <tr>
+               <td class="centered">32</td>
+               <td>Angel Falls (Venezuela)</td>
+               <td>Pilatus PC-12 – 270 kt</td>
+               <td class="route">SVMI<br />SVMI</td>
+               <td data-icao="SVMI" class="localconditions">Loading...</td>
+               <td class="centered">85</td>
+               <td class="centered">00:20</td>
+               <td>Auyán-tepui, Angel Falls, Canaima NP</td>
+               <td class="centered">
+                  <a href="https://en.wikipedia.org/wiki/Angel_Falls"
+                     >Angel Falls</a
+                  >
+               </td>
+               <td class="centered"><a href="https://drive.google.com/file/d/10bbM8R1hhVgtLm_uAqvccBmV_RtGlRFJ/view?usp=drive_link" target="_blank">Download</a></td>
+            </tr>
+
+            <tr>
+               <td class="centered">33</td>
+               <td>Machu Picchu (Peru)</td>
+               <td>Cessna Caravan – 160 kt</td>
+               <td class="route">SPZO<br />SPZO</td>
+               <td data-icao="SPZO" class="localconditions">Loading...</td>
+               <td class="centered">95</td>
+               <td class="centered">00:35</td>
+               <td>Sacred Valley, Machu Picchu, Huayna Picchu</td>
+               <td class="centered">
+                  <a href="https://en.wikipedia.org/wiki/Machu_Picchu"
+                     >Machu Picchu</a
+                  >
+               </td>
+               <td class="centered"><a href="https://drive.google.com/file/d/1SKujVCcOmvMQpw-2YdDth-ndWUR103Yn/view?usp=drive_link" target="_blank">Download</a></td>
+            </tr>
+
+            <tr>
+               <td class="centered">34</td>
+               <td>Salar de Uyuni (Bolivia)</td>
+               <td>Pilatus PC-12 – 270 kt</td>
+               <td class="route">SLUY<br />SLUY</td>
+               <td data-icao="SLUY" class="localconditions">Loading...</td>
+               <td class="centered">110</td>
+               <td class="centered">00:25</td>
+               <td>Salt flats, Isla Incahuasi, Mirror effect</td>
+               <td class="centered">
+                  <a href="https://en.wikipedia.org/wiki/Salar_de_Uyuni"
+                     >Salar de Uyuni</a
+                  >
+               </td>
+               <td class="centered"><a href="https://drive.google.com/file/d/1INn4bxKaY0l4mHdnfdJEAyL0zh_Qzmpv/view?usp=drive_link" target="_blank">Download</a></td>
+            </tr>
+
+            <tr>
+               <td class="centered">35</td>
+               <td>Galápagos Islands (Ecuador)</td>
+               <td>Diamond DA40 – 150 kt</td>
+               <td class="route">SEGS<br />SEGS</td>
+               <td data-icao="SEGS" class="localconditions">Loading...</td>
+               <td class="centered">120</td>
+               <td class="centered">00:50</td>
+               <td>Santa Cruz Island, Isabela Island, Bartolomé Island</td>
+               <td class="centered">
+                  <a href="https://en.wikipedia.org/wiki/Gal%C3%A1pagos_Islands"
+                     >Galápagos Islands</a
+                  >
+               </td>
+               <td class="centered"><a href="https://drive.google.com/file/d/1Qobw0iX86VBPGV62TaVO9qzCa9Fw1zcm/view?usp=drive_link" target="_blank">Download</a></td>
+            </tr>
+
+            <tr>
+               <td class="centered">36</td>
+               <td>Banff National Park (Canada)</td>
+               <td>Cessna Caravan – 160 kt</td>
+               <td class="route">CYBW<br />CYBW</td>
+               <td data-icao="CYBW" class="localconditions">Loading...</td>
+               <td class="centered">95</td>
+               <td class="centered">00:35</td>
+               <td>Lake Louise, Moraine Lake, Banff town</td>
+               <td class="centered">
+                  <a href="https://en.wikipedia.org/wiki/Banff_National_Park"
+                     >Banff National Park</a
+                  >
+               </td>
+               <td class="centered"><a href="https://drive.google.com/file/d/1eDb0QxMjeGbMOa-KCesIeSssakmXaBgE/view?usp=drive_link" target="_blank">Download</a></td>
+            </tr>
+
+            <tr>
+               <td class="centered">37</td>
+               <td>Antelope Canyon (USA)</td>
+               <td>Cessna 172 Skyhawk – 122 kt</td>
+               <td class="route">KPGA<br />KPGA</td>
+               <td data-icao="KPGA" class="localconditions">Loading...</td>
+               <td class="centered">50</td>
+               <td class="centered">00:25</td>
+               <td>Upper Canyon, Lower Canyon, Lake Powell</td>
+               <td class="centered">
+                  <a href="https://en.wikipedia.org/wiki/Antelope_Canyon"
+                     >Antelope Canyon</a
+                  >
+               </td>
+               <td class="centered"><a href="https://drive.google.com/file/d/1faT48oFWyc-1RMsOujcs0TYZQyMH8Asg/view?usp=drive_link" target="_blank">Download</a></td>
+            </tr>
+
+            <tr>
+               <td class="centered">38</td>
+               <td>Bryce Canyon (USA)</td>
+               <td>Cessna 172 Skyhawk – 122 kt</td>
+               <td class="route">KBCE<br />KBCE</td>
+               <td data-icao="KBCE" class="localconditions">Loading...</td>
+               <td class="centered">60</td>
+               <td class="centered">00:30</td>
+               <td>Hoodoos, Amphitheater, Rainbow Point</td>
+               <td class="centered">
+                  <a
+                     href="https://en.wikipedia.org/wiki/Bryce_Canyon_National_Park"
+                     >Bryce Canyon</a
+                  >
+               </td>
+               <td class="centered"><a href="https://drive.google.com/file/d/1MrMeEsABWP9wkOg1s6KzNfLok5Sr532P/view?usp=drive_link" target="_blank">Download</a></td>
+            </tr>
+
+            <tr>
+               <td class="centered">39</td>
+               <td>Grand Canyon (USA)</td>
+               <td>Cessna Caravan – 160 kt</td>
+               <td class="route">KGCN<br />KGCN</td>
+               <td data-icao="KGCN" class="localconditions">Loading...</td>
+               <td class="centered">110</td>
+               <td class="centered">00:40</td>
+               <td>South Rim, North Rim, Colorado River</td>
+               <td class="centered">
+                  <a href="https://en.wikipedia.org/wiki/Grand_Canyon"
+                     >Grand Canyon</a
+                  >
+               </td>
+               <td class="centered"><a href="https://drive.google.com/file/d/1XbV-wWcr3V8MwLIKJAAM53IxUnSH9_nh/view?usp=drive_link" target="_blank">Download</a></td>
+            </tr>
+            <tr>
+               <td class="centered">40</td>
+               <td>Monument Valley (USA)</td>
+               <td>Cessna Caravan – 160 kt</td>
+               <td class="route">KPGA<br />KPGA</td>
+               <td data-icao="KPGA" class="localconditions">Loading...</td>
+               <td class="centered">70</td>
+               <td class="centered">00:30</td>
+               <td>Buttes, Mesas, Valley floor</td>
+               <td class="centered">
+                  <a href="https://en.wikipedia.org/wiki/Monument_Valley"
+                     >Monument Valley</a
+                  >
+               </td>
+               <td class="centered"><a href="https://drive.google.com/file/d/1tVLPFn9ANxuodMnLx280H7bRTpObddwp/view?usp=drive_link" target="_blank">Download</a></td>
+            </tr>
+
+            <tr>
+               <td class="centered">41</td>
+               <td>Yellowstone National Park (USA)</td>
+               <td>Cessna Caravan – 160 kt</td>
+               <td class="route">KJAC<br />KJAC</td>
+               <td data-icao="KJAC" class="localconditions">Loading...</td>
+               <td class="centered">120</td>
+               <td class="centered">00:45</td>
+               <td>Old Faithful, Grand Prismatic, Yellowstone Lake</td>
+               <td class="centered">
+                  <a
+                     href="https://en.wikipedia.org/wiki/Yellowstone_National_Park"
+                     >Yellowstone National Park</a
+                  >
+               </td>
+               <td class="centered"><a href="https://drive.google.com/file/d/1LCsxTW6SQ8XWKwItsEwxknIP5bQ1D-SG/view?usp=drive_link" target="_blank">Download</a></td>
+            </tr>
+
+            <tr>
+               <td class="centered">42</td>
+               <td>Yosemite National Park (USA)</td>
+               <td>Cessna Caravan – 160 kt</td>
+               <td class="route">KMMH<br />KMMH</td>
+               <td data-icao="KMMH" class="localconditions">Loading...</td>
+               <td class="centered">100</td>
+               <td class="centered">00:40</td>
+               <td>El Capitan, Half Dome, Yosemite Valley</td>
+               <td class="centered">
+                  <a href="https://en.wikipedia.org/wiki/Yosemite_National_Park"
+                     >Yosemite National Park</a
+                  >
+               </td>
+               <td class="centered"><a href="https://drive.google.com/file/d/1oSs94xya1YWc2WgmSkZSaXV-6ReCRDgo/view?usp=drive_link" target="_blank">Download</a></td>
+            </tr>
+
+            <tr>
+               <td class="centered">43</td>
+               <td>Niagara Falls (Canada/USA)</td>
+               <td>Cessna 172 Skyhawk – 122 kt</td>
+               <td class="route">CYYZ<br />CYYZ</td>
+               <td data-icao="CYYZ" class="localconditions">Loading...</td>
+               <td class="centered">70</td>
+               <td class="centered">00:35</td>
+               <td>Horseshoe Falls, American Falls, Rainbow Bridge</td>
+               <td class="centered">
+                  <a href="https://en.wikipedia.org/wiki/Niagara_Falls"
+                     >Niagara Falls</a
+                  >
+               </td>
+               <td class="centered"><a href="https://drive.google.com/file/d/1UjzcbMNIY8F23rV1cmd-zVfHYg7zsAv5/view?usp=drive_link" target="_blank">Download</a></td>
+            </tr>
+
+            <tr>
+               <td class="centered">44</td>
+               <td>Victoria Harbour (Hong Kong)</td>
+               <td>Cessna 172 Skyhawk – 122 kt</td>
+               <td class="route">VHHH<br />VHHH</td>
+               <td data-icao="VHHH" class="localconditions">Loading...</td>
+               <td class="centered">40</td>
+               <td class="centered">00:20</td>
+               <td>Victoria Harbour, Hong Kong skyline, Kowloon</td>
+               <td class="centered">
+                  <a href="https://en.wikipedia.org/wiki/Victoria_Harbour"
+                     >Victoria Harbour</a
+                  >
+               </td>
+               <td class="centered"><a href="https://drive.google.com/file/d/1vIlE-xw_ZqqWpWOKRt7NkaYZ2HwNiovG/view?usp=drive_link" target="_blank">Download</a></td>
+            </tr>
+
+            <tr>
+               <td class="centered">45</td>
+               <td>Mount Everest (Nepal)</td>
+               <td>Pilatus PC-6 Porter – 145 kt</td>
+               <td class="route">VNKT<br />VNKT</td>
+               <td data-icao="VNKT" class="localconditions">Loading...</td>
+               <td class="centered">150</td>
+               <td class="centered">01:00</td>
+               <td>Everest Base Camp, Mount Everest, Khumbu Glacier</td>
+               <td class="centered">
+                  <a href="https://en.wikipedia.org/wiki/Mount_Everest"
+                     >Mount Everest</a
+                  >
+               </td>
+               <td class="centered"><a href="https://drive.google.com/file/d/1cOd7fm6SDYzKN0xXNfbCfUVg72ISnA19/view?usp=drive_link" target="_blank">Download</a></td>
+            </tr>
+
+            <tr>
+               <td class="centered">46</td>
+               <td>Taj Mahal (India)</td>
+               <td>Cessna 172 Skyhawk – 122 kt</td>
+               <td class="route">VIAG<br />VIAG</td>
+               <td data-icao="VIAG" class="localconditions">Loading...</td>
+               <td class="centered">45</td>
+               <td class="centered">00:22</td>
+               <td>Taj Mahal, Agra Fort, Yamuna River</td>
+               <td class="centered">
+                  <a href="https://en.wikipedia.org/wiki/Taj_Mahal"
+                     >Taj Mahal</a
+                  >
+               </td>
+               <td class="centered"><a href="https://drive.google.com/file/d/1CFoWz6ClgWCQbkRhTo3sToQF45o8172r/view?usp=drive_link" target="_blank">Download</a></td>
+            </tr>
+
+            <tr>
+               <td class="centered">47</td>
+               <td>Great Barrier Reef (Australia)</td>
+               <td>Cessna Caravan – 160 kt</td>
+               <td class="route">YBTL<br />YBTL</td>
+               <td data-icao="YBTL" class="localconditions">Loading...</td>
+               <td class="centered">150</td>
+               <td class="centered">00:55</td>
+               <td>Coral reefs, Whitsunday Islands, Heart Reef</td>
+               <td class="centered">
+                  <a href="https://en.wikipedia.org/wiki/Great_Barrier_Reef"
+                     >Great Barrier Reef</a
+                  >
+               </td>
+               <td class="centered"><a href="https://drive.google.com/file/d/1ENSmp6h_1aq2rmOFX-vCGMzlKE43GAAu/view?usp=drive_link" target="_blank">Download</a></td>
+            </tr>
+
+            <tr>
+               <td class="centered">48</td>
+               <td>Uluru Night (Australia)</td>
+               <td>Cessna Caravan – 160 kt</td>
+               <td class="route">YAYE<br />YAYE</td>
+               <td data-icao="YAYE" class="localconditions">Loading...</td>
+               <td class="centered">90</td>
+               <td class="centered">00:35</td>
+               <td>Uluru illuminated, Kata Tjuta night, Desert stars</td>
+               <td class="centered">
+                  <a href="https://en.wikipedia.org/wiki/Uluru">Uluru</a>
+               </td>
+               <td class="centered"><a href="https://drive.google.com/file/d/1q59-pM9bLoNGnC11uw6AFbUGio4A0-mq/view?usp=drive_link" target="_blank">Download</a></td>
+            </tr>
+
+            <tr>
+               <td class="centered">49</td>
+               <td>Mount Kilimanjaro (Tanzania)</td>
+               <td>Pilatus PC-6 Porter – 145 kt</td>
+               <td class="route">HTKJ<br />HTKJ</td>
+               <td data-icao="HTKJ" class="localconditions">Loading...</td>
+               <td class="centered">110</td>
+               <td class="centered">00:45</td>
+               <td>Kibo summit, Mawenzi peak, Shira plateau</td>
+               <td class="centered">
+                  <a href="https://en.wikipedia.org/wiki/Mount_Kilimanjaro"
+                     >Mount Kilimanjaro</a
+                  >
+               </td>
+               <td class="centered"><a href="https://drive.google.com/file/d/17L7e4Encim1S5JQ1ufPedieou0S4qj_f/view?usp=drive_link" target="_blank">Download</a></td>
+            </tr>
+            <tr>
+               <td class="centered">50</td>
+               <td>Ngorongoro Crater (Tanzania)</td>
+               <td>Cessna Caravan – 160 kt</td>
+               <td class="route">HTAR<br />HTAR</td>
+               <td data-icao="HTAR" class="localconditions">Loading...</td>
+               <td class="centered">60</td>
+               <td class="centered">00:25</td>
+               <td>Crater rim, Crater floor, Wildlife herds</td>
+               <td class="centered">
+                  <a
+                     href="https://en.wikipedia.org/wiki/Ngorongoro_Conservation_Area"
+                     >Ngorongoro Crater</a
+                  >
+               </td>
+               <td class="centered"><a href="https://drive.google.com/file/d/18v79w_LcYcjlw6xu7NP3wj2Pxvo0bPys/view?usp=drive_link" target="_blank">Download</a></td>
+            </tr>
+
+            <tr>
+               <td class="centered">51</td>
+               <td>Serengeti Balloon Safari (Tanzania)</td>
+               <td>Cessna 172 Skyhawk – 122 kt</td>
+               <td class="route">HTMW<br />HTMW</td>
+               <td data-icao="HTMW" class="localconditions">Loading...</td>
+               <td class="centered">85</td>
+               <td class="centered">00:40</td>
+               <td>Balloon launch site, Migration herds, River crossing</td>
+               <td class="centered">
+                  <a href="https://en.wikipedia.org/wiki/Serengeti"
+                     >Serengeti</a
+                  >
+               </td>
+               <td class="centered"><a href="https://drive.google.com/file/d/1fYx0LDVUnIaZ9GWAAYP-XfNCqu54wa4j/view?usp=drive_link" target="_blank">Download</a></td>
+            </tr>
+
+            <tr>
+               <td class="centered">52</td>
+               <td>Okavango Delta (Botswana)</td>
+               <td>Cessna Caravan – 160 kt</td>
+               <td class="route">FBMN<br />FBMN</td>
+               <td data-icao="FBMN" class="localconditions">Loading...</td>
+               <td class="centered">100</td>
+               <td class="centered">00:40</td>
+               <td>Delta channels, Hippo pools, Elephant herds</td>
+               <td class="centered">
+                  <a href="https://en.wikipedia.org/wiki/Okavango_Delta"
+                     >Okavango Delta</a
+                  >
+               </td>
+               <td class="centered"><a href="https://drive.google.com/file/d/1ZmIRd29MfvCmKJJH3WXSguekaMBCiaPI/view?usp=drive_link" target="_blank">Download</a></td>
+            </tr>
+
+            <tr>
+               <td class="centered">53</td>
+               <td>Victoria Falls Sunset (Zambia/Zimbabwe)</td>
+               <td>Cessna Caravan – 160 kt</td>
+               <td class="route">FLLI<br />FLLI</td>
+               <td data-icao="FLLI" class="localconditions">Loading...</td>
+               <td class="centered">55</td>
+               <td class="centered">00:25</td>
+               <td>
+                  Falls gorge sunset, Zambezi River glow, Knife’s Edge twilight
+               </td>
+               <td class="centered">
+                  <a href="https://en.wikipedia.org/wiki/Victoria_Falls"
+                     >Victoria Falls</a
+                  >
+               </td>
+               <td class="centered"><a href="https://drive.google.com/file/d/1fNfd0dIidctTNF8qLPsDya9fJU2BtNMM/view?usp=drive_link" target="_blank">Download</a></td>
+            </tr>
+
+            <tr>
+               <td class="centered">54</td>
+               <td>Serengeti Balloon Safari (Tanzania)</td>
+               <td>Cessna 172 Skyhawk – 122 kt</td>
+               <td class="route">HTMW<br />HTMW</td>
+               <td data-icao="HTMW" class="localconditions">Loading...</td>
+               <td class="centered">85</td>
+               <td class="centered">00:40</td>
+               <td>Balloon launch site, Migration herds, River crossing</td>
+               <td class="centered">
+                  <a href="https://en.wikipedia.org/wiki/Serengeti"
+                     >Serengeti</a
+                  >
+               </td>
+               <td class="centered"><a href="https://drive.google.com/file/d/1t9hLQRlgMS_lXgGkYmS3uNTNBp6_PfHa/view?usp=drive_link" target="_blank">Download</a></td>
+            </tr>
+
+            <tr>
+               <td class="centered">55</td>
+               <td>Table Mountain (South Africa)</td>
+               <td>Cessna Caravan – 160 kt</td>
+               <td class="route">FACT<br />FACT</td>
+               <td data-icao="FACT" class="localconditions">Loading...</td>
+               <td class="centered">70</td>
+               <td class="centered">00:30</td>
+               <td>Table Mountain, Cape Town, Robben Island</td>
+               <td class="centered">
+                  <a href="https://en.wikipedia.org/wiki/Table_Mountain"
+                     >Table Mountain</a
+                  >
+               </td>
+               <td class="centered"><a href="https://drive.google.com/file/d/15Wa76k8k3Q1GBn7tDHRKZF_1GoCtRytz/view?usp=drive_link" target="_blank">Download</a></td>
+            </tr>
+
+            <tr>
+               <td class="centered">56</td>
+               <td>Mount Cook (New Zealand)</td>
+               <td>Cessna Caravan – 160 kt</td>
+               <td class="route">NZMC<br />NZMC</td>
+               <td data-icao="NZMC" class="localconditions">Loading...</td>
+               <td class="centered">95</td>
+               <td class="centered">00:35</td>
+               <td>Mount Cook summit, Tasman Glacier, Hooker Valley</td>
+               <td class="centered">
+                  <a href="https://en.wikipedia.org/wiki/Aoraki/Mount_Cook"
+                     >Mount Cook</a
+                  >
+               </td>
+               <td class="centered"><a href="https://drive.google.com/file/d/1Gg8RIhfdWoXfo9JDIPvS_HbjrIJ7ijiT/view?usp=drive_link" target="_blank">Download</a></td>
+            </tr>
+
+            <tr>
+               <td class="centered">57</td>
+               <td>Mount Denali (USA)</td>
+               <td>Pilatus PC-6 Porter – 145 kt</td>
+               <td class="route">PAFA<br />PAFA</td>
+               <td data-icao="PAFA" class="localconditions">Loading...</td>
+               <td class="centered">140</td>
+               <td class="centered">01:00</td>
+               <td>Denali summit, Kahiltna Glacier, Wonder Lake</td>
+               <td class="centered">
+                  <a href="https://en.wikipedia.org/wiki/Denali"
+                     >Mount Denali</a
+                  >
+               </td>
+               <td class="centered"><a href="https://drive.google.com/file/d/1mtfO4ql8z3OhzrYQXJ8dMqBbq6np6uB1/view?usp=drive_link" target="_blank">Download</a></td>
+            </tr>
+
+            <tr>
+               <td class="centered">58</td>
+               <td>Mount Etna (Italy)</td>
+               <td>Cessna Caravan – 160 kt</td>
+               <td class="route">LICC<br />LICC</td>
+               <td data-icao="LICC" class="localconditions">Loading...</td>
+               <td class="centered">90</td>
+               <td class="centered">00:35</td>
+               <td>Etna summit, Lava fields, Catania</td>
+               <td class="centered">
+                  <a href="https://en.wikipedia.org/wiki/Mount_Etna"
+                     >Mount Etna</a
+                  >
+               </td>
+               <td class="centered"><a href="https://drive.google.com/file/d/1tzPlpqh-S3z6qFdWjSrzzc1cphFLQRs3/view?usp=drive_link" target="_blank">Download</a></td>
+            </tr>
+
+            <tr>
+               <td class="centered">59</td>
+               <td>Santorini (Greece)</td>
+               <td>Cessna 172 Skyhawk – 122 kt</td>
+               <td class="route">LGSR<br />LGSR</td>
+               <td data-icao="LGSR" class="localconditions">Loading...</td>
+               <td class="centered">40</td>
+               <td class="centered">00:20</td>
+               <td>Caldera cliffs, Oia village, Volcano island</td>
+               <td class="centered">
+                  <a href="https://en.wikipedia.org/wiki/Santorini"
+                     >Santorini</a
+                  >
+               </td>
+               <td class="centered"><a href="https://drive.google.com/file/d/1FaxZcRJMphFQNsUtMbf5PC0EBr9cy4Rw/view?usp=drive_link" target="_blank">Download</a></td>
+            </tr>
+            <tr>
+               <td class="centered">60</td>
+               <td>Meteora (Greece)</td>
+               <td>Cessna 172 Skyhawk – 122 kt</td>
+               <td class="route">LGKA<br />LGKA</td>
+               <td data-icao="LGKA" class="localconditions">Loading...</td>
+               <td class="centered">65</td>
+               <td class="centered">00:30</td>
+               <td>Monasteries on cliffs, Rock pillars, Kalambaka</td>
+               <td class="centered">
+                  <a href="https://en.wikipedia.org/wiki/Meteora">Meteora</a>
+               </td>
+               <td class="centered"><a href="https://drive.google.com/file/d/16txZ_TomF957Z3pvSvjn2u8TCwpC2qjC/view?usp=drive_link" target="_blank">Download</a></td>
+            </tr>
+
+            <tr>
+               <td class="centered">61</td>
+               <td>Amalfi Coast (Italy)</td>
+               <td>Cessna 172 Skyhawk – 122 kt</td>
+               <td class="route">LIRN<br />LIRN</td>
+               <td data-icao="LIRN" class="localconditions">Loading...</td>
+               <td class="centered">70</td>
+               <td class="centered">00:35</td>
+               <td>Positano, Amalfi, Ravello</td>
+               <td class="centered">
+                  <a href="https://en.wikipedia.org/wiki/Amalfi_Coast"
+                     >Amalfi Coast</a
+                  >
+               </td>
+               <td class="centered"><a href="https://drive.google.com/file/d/1un5l30xwIV5DuhieS4o3Mp74bHecn5Eb/view?usp=drive_link" target="_blank">Download</a></td>
+            </tr>
+
+            <tr>
+               <td class="centered">62</td>
+               <td>Victoria Peak (Hong Kong)</td>
+               <td>Cessna 172 Skyhawk – 122 kt</td>
+               <td class="route">VHHH<br />VHHH</td>
+               <td data-icao="VHHH" class="localconditions">Loading...</td>
+               <td class="centered">45</td>
+               <td class="centered">00:22</td>
+               <td>Victoria Peak, Hong Kong skyline, Kowloon</td>
+               <td class="centered">
+                  <a href="https://en.wikipedia.org/wiki/Victoria_Peak"
+                     >Victoria Peak</a
+                  >
+               </td>
+               <td class="centered"><a href="https://drive.google.com/file/d/10uUaTssnFS5tsBr1BPpoz7l310QaZ7rJ/view?usp=drive_link" target="_blank">Download</a></td>
+            </tr>
+
+            <tr>
+               <td class="centered">63</td>
+               <td>Venice (Italy)</td>
+               <td>Cessna 172 Skyhawk – 122 kt</td>
+               <td class="route">LIPZ<br />LIPZ</td>
+               <td data-icao="LIPZ" class="localconditions">Loading...</td>
+               <td class="centered">40</td>
+               <td class="centered">00:20</td>
+               <td>Grand Canal, St Mark’s Square, Murano</td>
+               <td class="centered">
+                  <a href="https://en.wikipedia.org/wiki/Venice">Venice</a>
+               </td>
+               <td class="centered"><a href="https://drive.google.com/file/d/15O1d8GpR663ZRhc4917EyPm7ZoRT5xdH/view?usp=drive_link" target="_blank">Download</a></td>
+            </tr>
+
+            <tr>
+               <td class="centered">64</td>
+               <td>Meteora Sunset (Greece)</td>
+               <td>Cessna 172 Skyhawk – 122 kt</td>
+               <td class="route">LGKA<br />LGKA</td>
+               <td data-icao="LGKA" class="localconditions">Loading...</td>
+               <td class="centered">70</td>
+               <td class="centered">00:30</td>
+               <td>
+                  Holy Trinity Monastery, Great Meteoron Monastery, Sunset
+                  cliffs, Kalambaka town lights
+               </td>
+               <td class="centered">
+                  <a href="https://en.wikipedia.org/wiki/Meteora">Meteora</a>
+               </td>
+               <td class="centered"><a href="https://drive.google.com/file/d/1p_x-o2Ws-l2lIgYdDFyUgo9Tiyq8QFBS/view?usp=drive_link" target="_blank">Download</a></td>
+            </tr>
+
+            <tr>
+               <td class="centered">65</td>
+               <td>Dubrovnik (Croatia)</td>
+               <td>Cessna 172 Skyhawk – 122 kt</td>
+               <td class="route">LDDU<br />LDDU</td>
+               <td data-icao="LDDU" class="localconditions">Loading...</td>
+               <td class="centered">55</td>
+               <td class="centered">00:25</td>
+               <td>Old Town Walls, Lokrum Island, Fort Lovrijenac</td>
+               <td class="centered">
+                  <a href="https://en.wikipedia.org/wiki/Dubrovnik"
+                     >Dubrovnik</a
+                  >
+               </td>
+               <td class="centered"><a href="https://drive.google.com/file/d/1jYUqlf2_TRLdo2CcNdNuGcZRy63kZwoH/view?usp=drive_link" target="_blank">Download</a></td>
+            </tr>
+
+            <tr>
+               <td class="centered">66</td>
+               <td>Plitvice Lakes (Croatia)</td>
+               <td>Cessna 172 Skyhawk – 122 kt</td>
+               <td class="route">LDZA<br />LDZA</td>
+               <td data-icao="LDZA" class="localconditions">Loading...</td>
+               <td class="centered">85</td>
+               <td class="centered">00:40</td>
+               <td>Waterfalls, Turquoise lakes, Forested hills</td>
+               <td class="centered">
+                  <a
+                     href="https://en.wikipedia.org/wiki/Plitvice_Lakes_National_Park"
+                     >Plitvice Lakes</a
+                  >
+               </td>
+               <td class="centered"><a href="https://drive.google.com/file/d/1QVAoqnBI_nL2d6zKDoS4LgJqt9Q-yqxe/view?usp=drive_link" target="_blank">Download</a></td>
+            </tr>
+
+            <tr>
+               <td class="centered">67</td>
+               <td>Lake Bled (Slovenia)</td>
+               <td>Cessna 172 Skyhawk – 122 kt</td>
+               <td class="route">LJLJ<br />LJLJ</td>
+               <td data-icao="LJLJ" class="localconditions">Loading...</td>
+               <td class="centered">60</td>
+               <td class="centered">00:30</td>
+               <td>Bled Island, Castle on cliff, Julian Alps</td>
+               <td class="centered">
+                  <a href="https://en.wikipedia.org/wiki/Lake_Bled"
+                     >Lake Bled</a
+                  >
+               </td>
+               <td class="centered"><a href="https://drive.google.com/file/d/1ycWK6yqfC1mY4EJTkndtppBWnYgbcSNK/view?usp=drive_link" target="_blank">Download</a></td>
+            </tr>
+
+            <tr>
+               <td class="centered">68</td>
+               <td>Matterhorn (Switzerland)</td>
+               <td>Pilatus PC-6 Porter – 145 kt</td>
+               <td class="route">LSZH<br />LSZH</td>
+               <td data-icao="LSZH" class="localconditions">Loading...</td>
+               <td class="centered">120</td>
+               <td class="centered">00:50</td>
+               <td>Matterhorn summit, Zermatt village, Glacier Paradise</td>
+               <td class="centered">
+                  <a href="https://en.wikipedia.org/wiki/Matterhorn"
+                     >Matterhorn</a
+                  >
+               </td>
+               <td class="centered"><a href="https://drive.google.com/file/d/1I6yKD8C-cBl4T0kFEJR4XBtQrTwymxuY/view?usp=drive_link" target="_blank">Download</a></td>
+            </tr>
+
+            <tr>
+               <td class="centered">69</td>
+               <td>Mont Blanc (France)</td>
+               <td>Pilatus PC-6 Porter – 145 kt</td>
+               <td class="route">LFPG<br />LFPG</td>
+               <td data-icao="LFPG" class="localconditions">Loading...</td>
+               <td class="centered">140</td>
+               <td class="centered">01:00</td>
+               <td>Mont Blanc summit, Chamonix Valley, Mer de Glace</td>
+               <td class="centered">
+                  <a href="https://en.wikipedia.org/wiki/Mont_Blanc"
+                     >Mont Blanc</a
+                  >
+               </td>
+               <td class="centered"><a href="https://drive.google.com/file/d/1_TR2kU_rjd8LG_8XGXv4EIUE0p1ZaJzh/view?usp=drive_link" target="_blank">Download</a></td>
+            </tr>
+            <tr>
+               <td class="centered">70</td>
+               <td>Dolomites (Italy)</td>
+               <td>Pilatus PC-6 Porter – 145 kt</td>
+               <td class="route">LIPZ<br />LIPZ</td>
+               <td data-icao="LIPZ" class="localconditions">Loading...</td>
+               <td class="centered">110</td>
+               <td class="centered">00:45</td>
+               <td>Tre Cime di Lavaredo, Marmolada Glacier, Val Gardena</td>
+               <td class="centered">
+                  <a href="https://en.wikipedia.org/wiki/Dolomites"
+                     >Dolomites</a
+                  >
+               </td>
+               <td class="centered"><a href="https://drive.google.com/file/d/1k30rAoA-YAUh0PjCPncOExsm9I_I1rYG/view?usp=drive_link" target="_blank">Download</a></td>
+            </tr>
+
+            <tr>
+               <td class="centered">71</td>
+               <td>Swiss Alps (Switzerland)</td>
+               <td>Pilatus PC-6 Porter – 145 kt</td>
+               <td class="route">LSZH<br />LSZH</td>
+               <td data-icao="LSZH" class="localconditions">Loading...</td>
+               <td class="centered">140</td>
+               <td class="centered">01:00</td>
+               <td>Eiger, Jungfrau, Matterhorn</td>
+               <td class="centered">
+                  <a href="https://en.wikipedia.org/wiki/Swiss_Alps"
+                     >Swiss Alps</a
+                  >
+               </td>
+               <td class="centered"><a href="https://drive.google.com/file/d/1ayOvhMvYvsjP9yLyPk2SmipyvaGbOe5a/view?usp=drive_link" target="_blank">Download</a></td>
+            </tr>
+
+            <tr>
+               <td class="centered">72</td>
+               <td>Scottish Highlands (UK)</td>
+               <td>Cessna Caravan – 160 kt</td>
+               <td class="route">EGPH<br />EGPH</td>
+               <td data-icao="EGPH" class="localconditions">Loading...</td>
+               <td class="centered">120</td>
+               <td class="centered">00:45</td>
+               <td>Loch Ness, Ben Nevis, Glencoe Valley</td>
+               <td class="centered">
+                  <a href="https://en.wikipedia.org/wiki/Scottish_Highlands"
+                     >Scottish Highlands</a
+                  >
+               </td>
+               <td class="centered"><a href="https://drive.google.com/file/d/1BTF5SbZLtqjRKQPpmm-hPUm6PbYDci8X/view?usp=drive_link" target="_blank">Download</a></td>
+            </tr>
+
+            <tr>
+               <td class="centered">73</td>
+               <td>Cliffs of Moher (Ireland)</td>
+               <td>Cessna 172 Skyhawk – 122 kt</td>
+               <td class="route">EINN<br />EINN</td>
+               <td data-icao="EINN" class="localconditions">Loading...</td>
+               <td class="centered">65</td>
+               <td class="centered">00:30</td>
+               <td>Cliffs of Moher, O’Brien’s Tower, Aran Islands</td>
+               <td class="centered">
+                  <a href="https://en.wikipedia.org/wiki/Cliffs_of_Moher"
+                     >Cliffs of Moher</a
+                  >
+               </td>
+               <td class="centered"><a href="https://drive.google.com/file/d/1OtmOCstK6tWmGMmEMTIL0PQO0LGHJAzi/view?usp=drive_link" target="_blank">Download</a></td>
+            </tr>
+
+            <tr>
+               <td class="centered">74</td>
+               <td>Ring of Kerry (Ireland)</td>
+               <td>Cessna 172 Skyhawk – 122 kt</td>
+               <td class="route">EIKY<br />EIKY</td>
+               <td data-icao="EIKY" class="localconditions">Loading...</td>
+               <td class="centered">90</td>
+               <td class="centered">00:45</td>
+               <td>Killarney Lakes, Skellig Michael, Dingle Peninsula</td>
+               <td class="centered">
+                  <a href="https://en.wikipedia.org/wiki/Ring_of_Kerry"
+                     >Ring of Kerry</a
+                  >
+               </td>
+               <td class="centered"><a href="https://drive.google.com/file/d/1r40cJnJvZl7juy6-6DpAlXuLuC5FhBAz/view?usp=drive_link" target="_blank">Download</a></td>
+            </tr>
+
+            <tr>
+               <td class="centered">75</td>
+               <td>Giant’s Causeway (Northern Ireland, UK)</td>
+               <td>Cessna 172 Skyhawk – 122 kt</td>
+               <td class="route">EGAA<br />EGAA</td>
+               <td data-icao="EGAA" class="localconditions">Loading...</td>
+               <td class="centered">60</td>
+               <td class="centered">00:30</td>
+               <td>
+                  Basalt columns, Carrick-a-Rede Rope Bridge, Dunluce Castle
+               </td>
+               <td class="centered">
+                  <a href="https://en.wikipedia.org/wiki/Giant%27s_Causeway"
+                     >Giant’s Causeway</a
+                  >
+               </td>
+               <td class="centered"><a href="https://drive.google.com/file/d/1mSpZt7zow9sI8YobDvc8aF-J3eAfdmyc/view?usp=drive_link" target="_blank">Download</a></td>
+            </tr>
+
+            <tr>
+               <td class="centered">76</td>
+               <td>Isle of Skye (Scotland, UK)</td>
+               <td>Cessna Caravan – 160 kt</td>
+               <td class="route">EGPO<br />EGPO</td>
+               <td data-icao="EGPO" class="localconditions">Loading...</td>
+               <td class="centered">95</td>
+               <td class="centered">00:35</td>
+               <td>Old Man of Storr, Quiraing, Fairy Pools</td>
+               <td class="centered">
+                  <a href="https://en.wikipedia.org/wiki/Isle_of_Skye"
+                     >Isle of Skye</a
+                  >
+               </td>
+               <td class="centered"><a href="https://drive.google.com/file/d/1Z4micXQckvF9Fg6OwqMCMEyAgQgrElUe/view?usp=drive_link" target="_blank">Download</a></td>
+            </tr>
+
+            <tr>
+               <td class="centered">77</td>
+               <td>Iceland Golden Circle (Iceland)</td>
+               <td>Cessna Caravan – 160 kt</td>
+               <td class="route">BIRK<br />BIRK</td>
+               <td data-icao="BIRK" class="localconditions">Loading...</td>
+               <td class="centered">120</td>
+               <td class="centered">00:45</td>
+               <td>Thingvellir, Geysir, Gullfoss</td>
+               <td class="centered">
+                  <a
+                     href="https://en.wikipedia.org/wiki/Golden_Circle_(Iceland)"
+                     >Golden Circle</a
+                  >
+               </td>
+               <td class="centered"><a href="https://drive.google.com/file/d/1pSjatV7HmuC5JpNH9WaoIH7SyRjjO7lJ/view?usp=drive_link" target="_blank">Download</a></td>
+            </tr>
+
+            <tr>
+               <td class="centered">78</td>
+               <td>Faroe Islands (Denmark)</td>
+               <td>Cessna 172 Skyhawk – 122 kt</td>
+               <td class="route">EKVG<br />EKVG</td>
+               <td data-icao="EKVG" class="localconditions">Loading...</td>
+               <td class="centered">80</td>
+               <td class="centered">00:40</td>
+               <td>Tórshavn, Vestmanna cliffs, Gjógv village</td>
+               <td class="centered">
+                  <a href="https://en.wikipedia.org/wiki/Faroe_Islands"
+                     >Faroe Islands</a
+                  >
+               </td>
+               <td class="centered"><a href="https://drive.google.com/file/d/13f6_CyLeyBzgcymF9iZ8pjoWx7v_w8cs/view?usp=drive_link" target="_blank">Download</a></td>
+            </tr>
+
+            <tr>
+               <td class="centered">79</td>
+               <td>Greenland Ice Cap (Greenland)</td>
+               <td>Pilatus PC-6 Porter – 145 kt</td>
+               <td class="route">BGSF<br />BGSF</td>
+               <td data-icao="BGSF" class="localconditions">Loading...</td>
+               <td class="centered">150</td>
+               <td class="centered">01:00</td>
+               <td>Ice sheet plateau, Glacial crevasses, Meltwater lakes</td>
+               <td class="centered">
+                  <a href="https://en.wikipedia.org/wiki/Greenland_ice_sheet"
+                     >Greenland Ice Cap</a
+                  >
+               </td>
+               <td class="centered"><a href="https://drive.google.com/file/d/1s5POZzHESbPwlQjHduZBWzFOXPcOwfpJ/view?usp=drive_link" target="_blank">Download</a></td>
+            </tr>
+            <tr>
+               <td class="centered">80</td>
+               <td>Patagonia (Chile/Argentina)</td>
+               <td>Cessna Caravan – 160 kt</td>
+               <td class="route">SAWC<br />SAWC</td>
+               <td data-icao="SAWC" class="localconditions">Loading...</td>
+               <td class="centered">140</td>
+               <td class="centered">00:55</td>
+               <td>Torres del Paine, Glacial lakes, Andean peaks</td>
+               <td class="centered">
+                  <a href="https://en.wikipedia.org/wiki/Patagonia"
+                     >Patagonia</a
+                  >
+               </td>
+               <td class="centered"><a href="#" target="_blank">Download</a></td>
+            </tr>
+
+            <tr>
+               <td class="centered">81</td>
+               <td>Atacama Desert (Chile)</td>
+               <td>Cessna Caravan – 160 kt</td>
+               <td class="route">SCAT<br />SCAT</td>
+               <td data-icao="SCAT" class="localconditions">Loading...</td>
+               <td class="centered">130</td>
+               <td class="centered">00:50</td>
+               <td>Valle de la Luna, Salt flats, El Tatio geysers</td>
+               <td class="centered">
+                  <a href="https://en.wikipedia.org/wiki/Atacama_Desert"
+                     >Atacama Desert</a
+                  >
+               </td>
+               <td class="centered"><a href="https://drive.google.com/file/d/1LnGdaGj0LfLvrZsDInPv04p2NYJHwOuf/view?usp=drive_link" target="_blank">Download</a></td>
+            </tr>
+
+            <tr>
+               <td class="centered">82</td>
+               <td>Amazon Rainforest (Brazil)</td>
+               <td>Cessna Caravan – 160 kt</td>
+               <td class="route">SBEG<br />SBEG</td>
+               <td data-icao="SBEG" class="localconditions">Loading...</td>
+               <td class="centered">120</td>
+               <td class="centered">00:45</td>
+               <td>
+                  Meeting of Waters, Rainforest canopy, Anavilhanas Archipelago
+               </td>
+               <td class="centered">
+                  <a href="https://en.wikipedia.org/wiki/Amazon_rainforest"
+                     >Amazon Rainforest</a
+                  >
+               </td>
+               <td class="centered"><a href="https://drive.google.com/file/d/1nfGlc2dnQmbj67LVbWFhPnPzrvRMnAUq/view?usp=drive_link" target="_blank">Download</a></td>
+            </tr>
+
+            <tr>
+               <td class="centered">83</td>
+               <td>Pantanal (Brazil)</td>
+               <td>Cessna Caravan – 160 kt</td>
+               <td class="route">SBCR<br />SBCR</td>
+               <td data-icao="SBCR" class="localconditions">Loading...</td>
+               <td class="centered">100</td>
+               <td class="centered">00:40</td>
+               <td>Wetlands, Wildlife herds, River bends</td>
+               <td class="centered">
+                  <a href="https://en.wikipedia.org/wiki/Pantanal">Pantanal</a>
+               </td>
+               <td class="centered"><a href="https://drive.google.com/file/d/1rAO0nG-S7XvxPiSwi7u_B4jK1vC2-GNW/view?usp=drive_link" target="_blank">Download</a></td>
+            </tr>
+
+            <tr>
+               <td class="centered">84</td>
+               <td>Galápagos Marine Reserve (Ecuador)</td>
+               <td>Cessna Caravan – 160 kt</td>
+               <td class="route">SEGS<br />SEGS</td>
+               <td data-icao="SEGS" class="localconditions">Loading...</td>
+               <td class="centered">150</td>
+               <td class="centered">01:00</td>
+               <td>Darwin Island, Wolf Island, Marine sanctuary</td>
+               <td class="centered">
+                  <a
+                     href="https://en.wikipedia.org/wiki/Gal%C3%A1pagos_Marine_Reserve"
+                     >Galápagos Marine Reserve</a
+                  >
+               </td>
+               <td class="centered"><a href="https://drive.google.com/file/d/1IMxsJH29bwVwJ50T-A7F50RHS_PfaYoG/view?usp=drive_link" target="_blank">Download</a></td>
+            </tr>
+
+            <tr>
+               <td class="centered">85</td>
+               <td>Sahara Desert (Morocco)</td>
+               <td>Cessna Caravan – 160 kt</td>
+               <td class="route">GMMN<br />GMMN</td>
+               <td data-icao="GMMN" class="localconditions">Loading...</td>
+               <td class="centered">180</td>
+               <td class="centered">01:10</td>
+               <td>Sand dunes, Oasis, Nomadic camp</td>
+               <td class="centered">
+                  <a href="https://en.wikipedia.org/wiki/Sahara"
+                     >Sahara Desert</a
+                  >
+               </td>
+               <td class="centered"><a href="https://drive.google.com/file/d/12GXPNE9PpxBvwpZED1ad1v82SC4LeCDa/view?usp=drive_link" target="_blank">Download</a></td>
+            </tr>
+
+            <tr>
+               <td class="centered">86</td>
+               <td>Nile River (Egypt)</td>
+               <td>Cessna 172 Skyhawk – 122 kt</td>
+               <td class="route">HECA<br />HECA</td>
+               <td data-icao="HECA" class="localconditions">Loading...</td>
+               <td class="centered">420</td>
+               <td class="centered">03:30</td>
+               <td>Cairo skyline, Luxor temples, Aswan dam</td>
+               <td class="centered">
+                  <a href="https://en.wikipedia.org/wiki/Nile">Nile River</a>
+               </td>
+               <td class="centered"><a href="https://drive.google.com/file/d/1ANDKKcJNkBsBIQOI6f-HKr3Mk95Fv63v/view?usp=drive_link" target="_blank">Download</a></td>
+            </tr>
+
+            <tr>
+               <td class="centered">87</td>
+               <td>Victoria Falls (Zambia/Zimbabwe, Daytime)</td>
+               <td>Cessna Caravan – 160 kt</td>
+               <td class="route">FLLI<br />FLLI</td>
+               <td data-icao="FLLI" class="localconditions">Loading...</td>
+               <td class="centered">60</td>
+               <td class="centered">00:25</td>
+               <td>Main Falls, Devil’s Cataract, Zambezi River Gorge</td>
+               <td class="centered">
+                  <a href="https://en.wikipedia.org/wiki/Victoria_Falls"
+                     >Victoria Falls</a
+                  >
+               </td>
+               <td class="centered"><a href="https://drive.google.com/file/d/1vj77t8vcosXQoZYF7P_V09Pm7M_0zXuI/view?usp=drive_link" target="_blank">Download</a></td>
+            </tr>
+
+            <tr>
+               <td class="centered">88</td>
+               <td>Okavango Delta Wildlife (Botswana)</td>
+               <td>Cessna Caravan – 160 kt</td>
+               <td class="route">FBMN<br />FBMN</td>
+               <td data-icao="FBMN" class="localconditions">Loading...</td>
+               <td class="centered">100</td>
+               <td class="centered">00:40</td>
+               <td>Elephant herds, Hippo pools, Delta channels</td>
+               <td class="centered">
+                  <a href="https://en.wikipedia.org/wiki/Okavango_Delta"
+                     >Okavango Delta</a
+                  >
+               </td>
+               <td class="centered"><a href="https://drive.google.com/file/d/1OhmqAiPlyWw_Qlx-5-K8yNUBhysOk655/view?usp=drive_link" target="_blank">Download</a></td>
+            </tr>
+
+            <tr>
+               <td class="centered">89</td>
+               <td>Namib Desert (Namibia)</td>
+               <td>Cessna Caravan – 160 kt</td>
+               <td class="route">FYWH<br />FYWH</td>
+               <td data-icao="FYWH" class="localconditions">Loading...</td>
+               <td class="centered">180</td>
+               <td class="centered">01:10</td>
+               <td>Sossusvlei dunes, Deadvlei, Skeleton Coast</td>
+               <td class="centered">
+                  <a href="https://en.wikipedia.org/wiki/Namib_Desert"
+                     >Namib Desert</a
+                  >
+               </td>
+               <td class="centered"><a href="https://drive.google.com/file/d/1lZzDWf3xD6oAjmmCPGYrBZvjOI-SVN4a/view?usp=drive_link" target="_blank">Download</a></td>
+            </tr>
+            <tr>
+               <td class="centered">90</td>
+               <td>Serengeti Migration (Tanzania)</td>
+               <td>Cessna Caravan – 160 kt</td>
+               <td class="route">HTMW<br />HTMW</td>
+               <td data-icao="HTMW" class="localconditions">Loading...</td>
+               <td class="centered">95</td>
+               <td class="centered">00:35</td>
+               <td>Wildebeest herds, River crossing, Predator plains</td>
+               <td class="centered">
+                  <a href="https://en.wikipedia.org/wiki/Serengeti"
+                     >Serengeti</a
+                  >
+               </td>
+               <td class="centered"><a href="https://drive.google.com/file/d/1rYunb-4ZZuI4sw1blsMtb-Jg_TKM2P0I/view?usp=drive_link" target="_blank">Download</a></td>
+            </tr>
+
+            <tr>
+               <td class="centered">91</td>
+               <td>Ngorongoro Crater Sunrise (Tanzania)</td>
+               <td>Cessna Caravan – 160 kt</td>
+               <td class="route">HTAR<br />HTAR</td>
+               <td data-icao="HTAR" class="localconditions">Loading...</td>
+               <td class="centered">70</td>
+               <td class="centered">00:30</td>
+               <td>
+                  Crater rim sunrise, Crater floor wildlife, Lake Magadi
+                  reflection
+               </td>
+               <td class="centered">
+                  <a
+                     href="https://en.wikipedia.org/wiki/Ngorongoro_Conservation_Area"
+                     >Ngorongoro Crater</a
+                  >
+               </td>
+               <td class="centered"><a href="https://drive.google.com/file/d/1qeCW2OUj5u3Y-QzCx4-Khkh7J6tIKJHc/view?usp=drive_link" target="_blank">Download</a></td>
+            </tr>
+
+            <tr>
+               <td class="centered">92</td>
+               <td>Great Barrier Reef (Australia)</td>
+               <td>Cessna Caravan – 160 kt</td>
+               <td class="route">YBTL<br />YBTL</td>
+               <td data-icao="YBTL" class="localconditions">Loading...</td>
+               <td class="centered">150</td>
+               <td class="centered">00:55</td>
+               <td>Coral reefs, Whitsunday Islands, Heart Reef</td>
+               <td class="centered">
+                  <a href="https://en.wikipedia.org/wiki/Great_Barrier_Reef"
+                     >Great Barrier Reef</a
+                  >
+               </td>
+               <td class="centered"><a href="https://drive.google.com/file/d/1imnF_Dr4N-QfCSw1vFehruoJrG8SC3Sd/view?usp=drive_link" target="_blank">Download</a></td>
+            </tr>
+
+            <tr>
+               <td class="centered">93</td>
+               <td>Bora Bora (French Polynesia)</td>
+               <td>Cessna 172 Skyhawk – 122 kt</td>
+               <td class="route">NTTB<br />NTTB</td>
+               <td data-icao="NTTB" class="localconditions">Loading...</td>
+               <td class="centered">45</td>
+               <td class="centered">00:22</td>
+               <td>Lagoon, Mount Otemanu, Barrier reef</td>
+               <td class="centered">
+                  <a href="https://en.wikipedia.org/wiki/Bora_Bora"
+                     >Bora Bora</a
+                  >
+               </td>
+               <td class="centered"><a href="https://drive.google.com/file/d/1EDbwg_iwp3GwILsLcFJl4sSsXQ8FXG5E/view?usp=drive_link" target="_blank">Download</a></td>
+            </tr>
+
+            <tr>
+               <td class="centered">94</td>
+               <td>Hawaii Volcanoes (USA)</td>
+               <td>Cessna Caravan – 160 kt</td>
+               <td class="route">PHKO<br />PHKO</td>
+               <td data-icao="PHKO" class="localconditions">Loading...</td>
+               <td class="centered">100</td>
+               <td class="centered">00:40</td>
+               <td>Kilauea crater, Mauna Loa, Volcanic coastline</td>
+               <td class="centered">
+                  <a
+                     href="https://en.wikipedia.org/wiki/Hawai%CA%BBi_Volcanoes_National_Park"
+                     >Hawaii Volcanoes</a
+                  >
+               </td>
+               <td class="centered"><a href="https://drive.google.com/file/d/1VKIRUwn6D-Yq9NDMUOJmnqSV5q_kHfAw/view?usp=drive_link" target="_blank">Download</a></td>
+            </tr>
+
+            <tr>
+               <td class="centered">95</td>
+               <td>Grand Canyon (USA)</td>
+               <td>Cessna Caravan – 160 kt</td>
+               <td class="route">KGCN<br />KGCN</td>
+               <td data-icao="KGCN" class="localconditions">Loading...</td>
+               <td class="centered">85</td>
+               <td class="centered">00:35</td>
+               <td>South Rim, North Rim, Colorado River</td>
+               <td class="centered">
+                  <a href="https://en.wikipedia.org/wiki/Grand_Canyon"
+                     >Grand Canyon</a
+                  >
+               </td>
+               <td class="centered"><a href="https://drive.google.com/file/d/1gyrUeKCe5_A4UPbtoOQ3ES05ovVK2ixj/view?usp=drive_link" target="_blank">Download</a></td>
+            </tr>
+
+            <tr>
+               <td class="centered">96</td>
+               <td>Kilimanjaro Sunrise (Tanzania)</td>
+               <td>Pilatus PC-6 Porter – 145 kt</td>
+               <td class="route">HTKJ<br />HTKJ</td>
+               <td data-icao="HTKJ" class="localconditions">Loading...</td>
+               <td class="centered">110</td>
+               <td class="centered">00:45</td>
+               <td>Kibo summit, Mawenzi peak, Shira plateau</td>
+               <td class="centered">
+                  <a href="https://en.wikipedia.org/wiki/Mount_Kilimanjaro"
+                     >Mount Kilimanjaro</a
+                  >
+               </td>
+               <td class="centered"><a href="https://drive.google.com/file/d/1eWiMMv6tZ7FhY08asPdwMjItnyDL5beI/view?usp=drive_link" target="_blank">Download</a></td>
+            </tr>
+
+            <tr>
+               <td class="centered">97</td>
+               <td>Yosemite Valley (USA)</td>
+               <td>Cessna Caravan – 160 kt</td>
+               <td class="route">KMMH<br />KMMH</td>
+               <td data-icao="KMMH" class="localconditions">Loading...</td>
+               <td class="centered">90</td>
+               <td class="centered">00:35</td>
+               <td>El Capitan, Half Dome, Yosemite Falls</td>
+               <td class="centered">
+                  <a href="https://en.wikipedia.org/wiki/Yosemite_Valley"
+                     >Yosemite Valley</a
+                  >
+               </td>
+               <td class="centered"><a href="https://drive.google.com/file/d/1ybR_bt2PczF2KoBkDOBosO_yj9zLIcT3/view?usp=drive_link" target="_blank">Download</a></td>
+            </tr>
+
+            <tr>
+               <td class="centered">98</td>
+               <td>Ålesund (Norway)</td>
+               <td>Cessna 172 Skyhawk – 122 kt</td>
+               <td class="route">ENAL<br />ENAL</td>
+               <td data-icao="ENAL" class="localconditions">Loading...</td>
+               <td class="centered">70</td>
+               <td class="centered">00:30</td>
+               <td>Art Nouveau town center, Aksla viewpoint, Hjørundfjord</td>
+               <td class="centered">
+                  <a href="https://en.wikipedia.org/wiki/%C3%85lesund"
+                     >Ålesund</a
+                  >
+               </td>
+               <td class="centered"><a href="https://drive.google.com/file/d/1izLEN87k3WuzHx5opZckGOSNoLQuh7sN/view?usp=drive_link" target="_blank">Download</a></td>
+            </tr>
+
+            <tr>
+               <td class="centered">99</td>
+               <td>Longsheng Rice Terraces (China)</td>
+               <td>Cessna 172 Skyhawk – 122 kt</td>
+               <td class="route">ZGLG<br />ZGLG</td>
+               <td data-icao="ZGLG" class="localconditions">Loading...</td>
+               <td class="centered">80</td>
+               <td class="centered">00:40</td>
+               <td>
+                  Dragon’s Backbone Terraces, Ping’an Village, Jinkeng Terraces
+               </td>
+               <td class="centered">
+                  <a
+                     href="https://en.wikipedia.org/wiki/Longsheng_Rice_Terraces"
+                     >Longsheng Rice Terraces</a>
+               </td>
+               <td class="centered"><a href="https://drive.google.com/file/d/11NVldgCdKjtOIx-NNBP83ZKgVk1iQkC1/view?usp=drive_link" target="_blank">Download</a></td>
+            </tr>
+         </tbody>
+      </table>
+     <p align="center">Made by Zox©2026 with help from MS Copilot AI</p>
+<script>
+// SEARCH Bar
+const searchBar = document.getElementById('searchBar');
+const resetBtn = document.getElementById('resetBtn');
+const table = document.getElementById('flightsTable');
+const rows = table.getElementsByTagName('tr');
+
+searchBar.addEventListener('keyup', function() {
+  const filter = searchBar.value.toLowerCase();
+  for (let i = 1; i < rows.length; i++) {
+    const cells = rows[i].getElementsByTagName('td');
+    let match = false;
+    for (let j = 0; j < cells.length; j++) {
+      if (cells[j].innerText.toLowerCase().includes(filter)) {
+        match = true;
+        break;
+      }
+    }
+    rows[i].style.display = match ? '' : 'none';
+  }
+});
+
+resetBtn.addEventListener('click', function() {
+  searchBar.value = '';
+  for (let i = 1; i < rows.length; i++) {
+    rows[i].style.display = '';
+  }
+});
+
+// ICAO → koordinate (primer, dodaj sve aerodrome)
+const icaoTimezones = {
+  "OYSQ": "Asia/Aden","HAMK": "Africa/Addis_Ababa","FYLZ": "Africa/Windhoek",
+  "HTAR": "Africa/Dar_es_Salaam","HTMW": "Africa/Dar_es_Salaam","HTKJ": "Africa/Dar_es_Salaam",
+  "HECA": "Africa/Cairo","HEGR": "Africa/Cairo","OJAI": "Asia/Amman","FLLI": "Africa/Lusaka",
+  "EPSC": "Europe/Warsaw","EDMM": "Europe/Berlin","LGBL": "Europe/Athens","LGSR": "Europe/Athens",
+  "LGKA": "Europe/Athens","LSZR": "Europe/Zurich","LSZH": "Europe/Zurich","LIPX": "Europe/Rome",
+  "LICC": "Europe/Rome","LIRN": "Europe/Rome","LIPZ": "Europe/Rome","LYUZ": "Europe/Belgrade",
+  "EGAA": "Europe/London","EGPH": "Europe/London","EINN": "Europe/Dublin","EIKY": "Europe/Dublin",
+  "EGPO": "Europe/London","BIRK": "Atlantic/Reykjavik","EKVG": "Atlantic/Faroe","BGSF": "America/Godthab",
+  "LDDU": "Europe/Zagreb","LDZA": "Europe/Zagreb","LJLJ": "Europe/Ljubljana","LFPG": "Europe/Paris",
+  "ZBAA": "Asia/Shanghai","ZPPP": "Asia/Shanghai","ZGLG": "Asia/Shanghai","VVNB": "Asia/Ho_Chi_Minh",
+  "RJTT": "Asia/Tokyo","LTAY": "Europe/Istanbul","LTAZ": "Europe/Istanbul","YAYE": "Australia/Darwin",
+  "YBTL": "Australia/Brisbane","NZDN": "Pacific/Auckland","NZMF": "Pacific/Auckland","NZMC": "Pacific/Auckland",
+  "SVMI": "America/Caracas","SPZO": "America/Lima","SLUY": "America/La_Paz","SEGS": "Pacific/Galapagos",
+  "CYBW": "America/Edmonton","CYYZ": "America/Toronto","KPGA": "America/Denver","KBCE": "America/Denver",
+  "KGCN": "America/Denver","KJAC": "America/Denver","KMMH": "America/Los_Angeles","VHHH": "Asia/Hong_Kong",
+  "VNKT": "Asia/Kathmandu","VIAG": "Asia/Kolkata","FACT": "Africa/Johannesburg","PAFA": "America/Anchorage",
+  "ENAL": "Europe/Oslo","SBFI": "America/Sao_Paulo","SBEG": "America/Manaus","SBCR": "America/Cuiaba",
+  "SAWC": "America/Argentina/Ushuaia","SCAT": "America/Santiago","GMMN": "Africa/Casablanca",
+  "FBMN": "Africa/Gaborone","FYWH": "Africa/Windhoek"
+};
+
+// Time-of-day color mapping function
+
+function renderCell(icao) {
+  const entry = icaoCoords[icao];
+  return `<td style="background-color:${entry.timeColor}">${icao}</td>`;
+}
+
+// ICAO coordinates with dynamic color method
+const icaoCoords = {
+  "OYSQ": { lat: 12.630, lon: 53.905, getColor: (time="00:00") => getCellColor(parseInt(time)) }, // Socotra
+  "HAMK": { lat: 13.566, lon: 39.500, getColor: (time="00:00") => getCellColor(parseInt(time)) }, // Mekelle
+  "FYLZ": { lat: -26.687, lon: 15.242, getColor: (time="00:00") => getCellColor(parseInt(time)) }, // Lüderitz
+  "HTAR": { lat: -2.925, lon: 35.467, getColor: (time="00:00") => getCellColor(parseInt(time)) }, // Arusha
+  "HTMW": { lat: -3.369, lon: 35.849, getColor: (time="00:00") => getCellColor(parseInt(time)) }, // Manyara
+  "HECA": { lat: 30.121, lon: 31.405, getColor: (time="00:00") => getCellColor(parseInt(time)) }, // Cairo
+  "OJAI": { lat: 31.722, lon: 35.993, getColor: (time="00:00") => getCellColor(parseInt(time)) }, // Amman
+  "FLLI": { lat: -17.832, lon: 25.822, getColor: (time="00:00") => getCellColor(parseInt(time)) }, // Livingstone
+  "EPSC": { lat: 53.584, lon: 14.902, getColor: (time="00:00") => getCellColor(parseInt(time)) }, // Szczecin
+  "EDMM": { lat: 47.716, lon: 10.317, getColor: (time="00:00") => getCellColor(parseInt(time)) }, // Memmingen
+  "LGBL": { lat: 39.219, lon: 22.794, getColor: (time="00:00") => getCellColor(parseInt(time)) }, // Larissa
+  "LSZR": { lat: 47.485, lon: 9.561, getColor: (time="00:00") => getCellColor(parseInt(time)) }, // St. Gallen
+  "LIPX": { lat: 45.395, lon: 10.868, getColor: (time="00:00") => getCellColor(parseInt(time)) }, // Verona
+  "LICC": { lat: 37.466, lon: 15.063, getColor: (time="00:00") => getCellColor(parseInt(time)) }, // Catania
+  "LYUZ": { lat: 43.333, lon: 19.900, getColor: (time="21:00") => getCellColor(parseInt(time)) }, // Užice
+  "EGAA": { lat: 54.657, lon: -6.215, getColor: (time="00:00") => getCellColor(parseInt(time)) }, // Belfast
+  "VRMM": { lat: 4.192, lon: 73.528, getColor: (time="00:00") => getCellColor(parseInt(time)) }, // Malé
+  "HEGR": { lat: 26.339, lon: 31.737, getColor: (time="00:00") => getCellColor(parseInt(time)) }, // Asyut
+  "WARR": { lat: -7.379, lon: 112.787, getColor: (time="00:00") => getCellColor(parseInt(time)) }, // Juanda
+  "RPVT": { lat: 9.664, lon: 123.855, getColor: (time="00:00") => getCellColor(parseInt(time)) }, // Tagbilaran
+  "ZBAA": { lat: 40.080, lon: 116.584, getColor: (time="04:00") => getCellColor(parseInt(time)) }, // Beijing
+  "ZPPP": { lat: 24.992, lon: 102.743, getColor: (time="00:00") => getCellColor(parseInt(time)) }, // Kunming
+  "VVNB": { lat: 21.221, lon: 105.806, getColor: (time="00:00") => getCellColor(parseInt(time)) }, // Hanoi
+  "RJTT": { lat: 35.552, lon: 139.779, getColor: (time="05:00") => getCellColor(parseInt(time)) }, // Tokyo Haneda
+  "LTAY": { lat: 37.785, lon: 29.701, getColor: (time="00:00") => getCellColor(parseInt(time)) }, // Denizli
+  "LTAZ": { lat: 38.771, lon: 34.534, getColor: (time="00:00") => getCellColor(parseInt(time)) }, // Nevşehir
+  "YAYE": { lat: -25.189, lon: 130.976, getColor: (time="00:00") => getCellColor(parseInt(time)) }, // Ayers Rock
+  "NZDN": { lat: -45.928, lon: 170.198, getColor: (time="00:00") => getCellColor(parseInt(time)) }, // Dunedin
+  "NZMF": { lat: -44.673, lon: 167.923, getColor: (time="00:00") => getCellColor(parseInt(time)) }, // Milford Sound
+  "SBFI": { lat: -25.596, lon: -54.487, getColor: (time="00:00") => getCellColor(parseInt(time)) }, // Foz do Iguaçu
+  "SVMI": { lat: 10.603, lon: -66.990, getColor: (time="00:00") => getCellColor(parseInt(time)) }, // Caracas
+  "SPZO": { lat: -13.536, lon: -71.938, getColor: (time="00:00") => getCellColor(parseInt(time)) }, // Cusco
+  "SLUY": { lat: -20.000, lon: -67.500, getColor: (time="00:00") => getCellColor(parseInt(time)) }, // Uyuni
+  "SEGS": { lat: -0.454, lon: -90.265, getColor: (time="00:00") => getCellColor(parseInt(time)) }, // Galápagos
+  "CYBW": { lat: 51.103, lon: -114.374, getColor: (time="00:00") => getCellColor(parseInt(time)) }, // Calgary
+  "KPGA": { lat: 36.926, lon: -111.448, getColor: (time="00:00") => getCellColor(parseInt(time)) }, // Page
+  "KBCE": { lat: 37.706, lon: -112.145, getColor: (time="00:00") => getCellColor(parseInt(time)) }, // Bryce Canyon
+  "KGCN": { lat: 35.952, lon: -112.147, getColor: (time="00:00") => getCellColor(parseInt(time)) }, // Grand Canyon
+  "KJAC": { lat: 43.607, lon: -110.738, getColor: (time="00:00") => getCellColor(parseInt(time)) }, // Jackson Hole (Yellowstone)
+  "KMMH": { lat: 37.624, lon: -118.985, getColor: (time="00:00") => getCellColor(parseInt(time)) }, // Mammoth Yosemite (Yosemite)
+  "CYYZ": { lat: 43.677, lon: -79.630, getColor: (time="15:00") => getCellColor(parseInt(time)) }, // Toronto Pearson (Niagara Falls)
+  "VHHH": { lat: 22.308, lon: 113.918, getColor: (time="00:00") => getCellColor(parseInt(time)) }, // Hong Kong Intl
+  "VNKT": { lat: 27.696, lon: 85.359, getColor: (time="01:00") => getCellColor(parseInt(time)) }, // Kathmandu Tribhuvan (Everest)
+  "VIAG": { lat: 27.155, lon: 77.960, getColor: (time="00:00") => getCellColor(parseInt(time)) }, // Agra (Taj Mahal)
+  "YBTL": { lat: -19.252, lon: 146.765, getColor: (time="00:00") => getCellColor(parseInt(time)) }, // Townsville (Great Barrier Reef)
+  "HTKJ": { lat: -3.429, lon: 37.074, getColor: (time="00:00") => getCellColor(parseInt(time)) }, // Kilimanjaro
+  "FACT": { lat: -33.969, lon: 18.601, getColor: (time="22:00") => getCellColor(parseInt(time)) }, // Cape Town (Table Mountain)
+  "NZMC": { lat: -43.765, lon: 170.133, getColor: (time="00:00") => getCellColor(parseInt(time)) }, // Mount Cook
+  "PAFA": { lat: 64.815, lon: -147.856, getColor: (time="00:00") => getCellColor(parseInt(time)) }, // Fairbanks (Denali)
+  "LGSR": { lat: 36.399, lon: 25.479, getColor: (time="00:00") => getCellColor(parseInt(time)) }, // Santorini
+  "LGKA": { lat: 40.973, lon: 21.414, getColor: (time="00:00") => getCellColor(parseInt(time)) }, // Kastoria (Meteora)
+  "LIRN": { lat: 40.886, lon: 14.291, getColor: (time="00:00") => getCellColor(parseInt(time)) }, // Naples (Amalfi Coast)
+  "LIPZ": { lat: 45.505, lon: 12.351, getColor: (time="00:00") => getCellColor(parseInt(time)) }, // Venice / Dolomites
+  "LDDU": { lat: 42.561, lon: 18.268, getColor: (time="00:00") => getCellColor(parseInt(time)) }, // Dubrovnik
+  "LDZA": { lat: 45.742, lon: 16.068, getColor: (time="00:00") => getCellColor(parseInt(time)) }, // Zagreb (Plitvice Lakes)
+  "LJLJ": { lat: 46.224, lon: 14.456, getColor: (time="00:00") => getCellColor(parseInt(time)) }, // Ljubljana (Lake Bled)
+  "LSZH": { lat: 47.464, lon: 8.549, getColor: (time="00:00") => getCellColor(parseInt(time)) }, // Zurich (Matterhorn/Swiss Alps)
+  "LFPG": { lat: 49.009, lon: 2.547, getColor: (time="21:00") => getCellColor(parseInt(time)) }, // Paris CDG (Mont Blanc)
+  "EGPH": { lat: 55.950, lon: -3.372, getColor: (time="00:00") => getCellColor(parseInt(time)) }, // Edinburgh (Scottish Highlands)
+  "EINN": { lat: 52.702, lon: -8.925, getColor: (time="00:00") => getCellColor(parseInt(time)) }, // Shannon (Cliffs of Moher)
+  "EIKY": { lat: 52.180, lon: -9.523, getColor: (time="00:00") => getCellColor(parseInt(time)) }, // Kerry (Ring of Kerry)
+  "EGPO": { lat: 58.215, lon: -6.331, getColor: (time="00:00") => getCellColor(parseInt(time)) }, // Stornoway (Isle of Skye)
+  "BIRK": { lat: 64.130, lon: -21.940, getColor: (time="00:00") => getCellColor(parseInt(time)) }, // Reykjavik (Golden Circle)
+  "EKVG": { lat: 62.063, lon: -7.277, getColor: (time="00:00") => getCellColor(parseInt(time)) }, // Vágar (Faroe Islands)
+  "BGSF": { lat: 67.012, lon: -50.711, getColor: (time="00:00") => getCellColor(parseInt(time)) }, // Kangerlussuaq (Greenland Ice Cap)
+  "SAWC": { lat: -51.609, lon: -72.587, getColor: (time="00:00") => getCellColor(parseInt(time)) }, // El Calafate (Patagonia)
+  "SCAT": { lat: -23.444, lon: -70.445, getColor: (time="17:00") => getCellColor(parseInt(time)) }, // Antofagasta (Atacama Desert)
+  "SBEG": { lat: -3.119, lon: -60.021, getColor: (time="16:00") => getCellColor(parseInt(time)) }, // Manaus (Amazon Rainforest)
+  "SBCR": { lat: -19.011, lon: -57.653, getColor: (time="00:00") => getCellColor(parseInt(time)) }, // Corumbá (Pantanal)
+  "GMMN": { lat: 33.367, lon: -7.589, getColor: (time="00:00") => getCellColor(parseInt(time)) }, // Casablanca (Sahara Desert)
+  "FYWH": { lat: -22.612, lon: 17.064, getColor: (time="00:00") => getCellColor(parseInt(time)) }, // Windhoek (Namib Desert)
+  "NTTB": { lat: -16.444, lon: -151.751, getColor: (time="00:00") => getCellColor(parseInt(time)) }, // Bora Bora
+  "PHKO": { lat: 19.738, lon: -156.046, getColor: (time="00:00") => getCellColor(parseInt(time)) }, // Kona (Hawai'i Volcanoes)
+  "ENAL": { lat: 62.562, lon: 6.119, getColor: (time="21:00") => getCellColor(parseInt(time)) }, // Ålesund Vigra
+  "ZGLG": { lat: 25.286, lon: 110.423, getColor: (time="00:00") => getCellColor(parseInt(time)) }  // Guilin (Longsheng Rice Terraces)
+};
+
+// Weathercode → opis
+const weatherDescriptions = {
+  0: "Clear sky", 1: "Mainly clear", 2: "Partly cloudy", 3: "Overcast",
+  45: "Fog", 48: "Rime fog", 51: "Light drizzle", 53: "Moderate drizzle",
+  55: "Dense drizzle", 56: "Light freezing drizzle", 57: "Dense freezing drizzle",
+  61: "Slight rain", 63: "Moderate rain", 65: "Heavy rain",
+  66: "Light freezing rain", 67: "Heavy freezing rain",
+  71: "Slight snow", 73: "Moderate snow", 75: "Heavy snow",
+  77: "Snow grains", 80: "Slight rain showers", 81: "Moderate rain showers",
+  82: "Violent rain showers", 85: "Slight snow showers", 86: "Heavy snow showers",
+  95: "Thunderstorm", 96: "Thunderstorm with slight hail", 99: "Thunderstorm with heavy hail"
+};
+
+// Convert km/h to knots
+function kmhToKnots(kmh) {
+  return (kmh * 0.54).toFixed(1);
+}
+
+// Map degrees to compass points
+function degreesToCompass(deg) {
+  const compassPoints = ["N","NE","E","SE","S","SW","W","NW"];
+  return compassPoints[Math.round(deg / 45) % 8];
+}
+
+// Time-of-day color mapping
+function getCellColor(hour) {
+  if (hour >= 4 && hour < 6) return "#3d73c6";   // Dawn
+  if (hour >= 6 && hour < 8) return "#FFA500";   // Sunrise
+  if (hour >= 8 && hour < 10) return "#FFF44F";  // Morning
+  if (hour >= 10 && hour < 12) return "#FFD700"; // Late Morning
+  if (hour === 12) return "#c2dbea";             // Noon
+  if (hour >= 13 && hour < 17) return "#FFCC80"; // Afternoon
+  if (hour >= 17 && hour < 19) return "#FF7043"; // Sunset
+  if (hour >= 19 && hour < 21) return "#6A5ACD"; // Dusk
+  if (hour >= 21 && hour < 23) return "#4B0082"; // Evening
+  return "#29005e";                              // Night
+}
+function getTimeOfDayName(hour) {
+  if (hour >= 4 && hour < 6) return "Dawn";
+  if (hour >= 6 && hour < 8) return "Sunrise";
+  if (hour >= 8 && hour < 10) return "Morning";
+  if (hour >= 10 && hour < 12) return "Late Morning";
+  if (hour === 12) return "Noon";
+  if (hour >= 13 && hour < 17) return "Afternoon";
+  if (hour >= 17 && hour < 19) return "Sunset";
+  if (hour >= 19 && hour < 21) return "Dusk";
+  if (hour >= 21 && hour < 23) return "Evening";
+  return "Night";
+}
+
+// Convert hex color to RGB
+function hexToRgb(hex) {
+  hex = hex.replace("#", "");
+  if (hex.length === 3) {
+    hex = hex.split("").map(c => c + c).join("");
+  }
+  const bigint = parseInt(hex, 16);
+  return {
+    r: (bigint >> 16) & 255,
+    g: (bigint >> 8) & 255,
+    b: bigint & 255
+  };
+}
+
+// Calculate luminance
+function getLuminance({r, g, b}) {
+  return (0.299 * r + 0.587 * g + 0.114 * b) / 255;
+}
+
+// Decide text color (white or black)
+function getTextColor(bgHex) {
+  const rgb = hexToRgb(bgHex);
+  const luminance = getLuminance(rgb);
+  return luminance > 0.5 ? "#000000" : "#FFFFFF"; // black if bright, white if dark
+}
+
+// Helper: get current local time string for ICAO
+function getLocalTime(icao) {
+  const tz = icaoTimezones[icao] || "UTC";
+  const nowUTC = Date.now();
+  return new Intl.DateTimeFormat("en-GB", {
+    timeZone: tz,
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: false
+  }).format(nowUTC);
+}
+
+// Fetch Open-Meteo + show local time
+async function updateCell(icao) {
+  const cell = document.querySelector(`[data-icao="${icao}"]`);
+  if (!cell) return;
+
+  const coords = icaoCoords[icao];
+  if (!coords) {
+    cell.textContent = "No coordinates";
+    return;
+  }
+
+  try {
+    const response = await fetch(
+      `https://api.open-meteo.com/v1/forecast?latitude=${coords.lat}&longitude=${coords.lon}&current_weather=true&windspeed_unit=kmh&winddirection_unit=degree`
+    );
+    const data = await response.json();
+
+    const weather = data.current_weather;
+    const windKnots = kmhToKnots(weather.windspeed);
+    const windDirDeg = weather.winddirection;
+    const windCompass = degreesToCompass(windDirDeg);
+    const temp = weather.temperature + "°C";
+    const wxCode = weather.weathercode;
+    const condition = weatherDescriptions[wxCode] || "Unknown";
+
+    const localTime = getLocalTime(icao);
+    const hour = parseInt(localTime.split(":")[0], 10);
+const bgColor = getCellColor(hour);
+const textColor = getTextColor(bgColor);
+const timeOfDayName = getTimeOfDayName(hour);
+
+cell.className = "localconditions";
+cell.style.backgroundColor = bgColor;
+cell.style.color = textColor;
+cell.innerHTML = `
+  <div class="time">${localTime} (${timeOfDayName})</div>
+  <div class="abbr">Wind: ${windKnots} kt (${windDirDeg}° ${windCompass}), Temp: ${temp}, ${condition}</div>
+`;
+  } catch (err) {
+    console.error("Error fetching weather for " + icao, err);
+    cell.className = "localconditions error";
+    cell.innerHTML = `<div class="time">${getLocalTime(icao)}</div><div class="abbr">No data</div>`;
+  }
+}
+
+// Refresh all ICAOs
+function refreshAll() {
+  Object.keys(icaoCoords).forEach(code => updateCell(code));
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  refreshAll();
+  setInterval(refreshAll, 300000); // Refresh every 5 minutes
+});
+</script>
+
+   </body>
+</html>
