@@ -10,7 +10,27 @@
   #resetBtn { padding: 8px 12px; margin-left: 10px; }
         
 	  table.flightplans {
-            
+
+.banner {
+    position: sticky;   /* keeps banner fixed */
+    top: 0;             /* sticks to very top of viewport */
+    z-index: 3;         /* higher than table header */
+    background: #000;   /* fallback background */
+    text-align: center;
+  }
+  .banner img {
+    width: 100%;        /* full width banner */
+    height: auto;       /* keep aspect ratio */
+    display: block;
+  }
+
+  thead th {
+    background: #ddd;
+    position: sticky;   /* keeps header fixed */
+    top: 120px;         /* adjust to banner height */
+    z-index: 2;
+  }
+		  
 			align: "center";
 			width: 100%;
             border-collapse: collapse;
@@ -75,7 +95,7 @@
 
 <input type="text" id="searchBar" placeholder="Type anything to search...">
 <button id="resetBtn">Reset</button>
-
+<div class="banner"> <img src="https://static.wixstatic.com/media/a7545c_ae5f3a23c4784419a42091e624768323~mv2.png" alt="Banner Image"> </div>
       <table class="flightplans" id="flightsTable">
          <thead>
             <tr>
@@ -2039,4 +2059,5 @@ document.addEventListener("DOMContentLoaded", () => {
 </script>
 
    </body>
+
 </html>
